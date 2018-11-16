@@ -2,7 +2,7 @@
   "name": "leeif",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production"
@@ -34,6 +34,7 @@
     "prop-types": "15.6.2",
     "react": "16.4.2",
     "react-dom": "16.4.2",
+    "react-places-autocomplete": "7.2.0",
     "react-router-dom": "4.3.1",
     "style-loader": "^0.23.1",
     "styled-components": "^4.0.2",
