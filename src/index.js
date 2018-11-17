@@ -5,15 +5,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Navigation from './components/ui/navigation/Navigation';
 import AddressEntry from './components/addressEntry/AddressEntry';
 import { GlobalStyles } from './indexStyles';
-import { GOOGLE_API_KEY } from './keys';
+// import { GOOGLE_API_KEY } from './keys';
 
-class App extends Component { 
-  componentDidMount() {
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places`;
-    document.body.appendChild(script);
-  }
-
+class App extends Component {
   render() {
     return (
       <BrowserRouter>
@@ -27,5 +21,5 @@ class App extends Component {
   }
 }
 
-const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+const root = document.getElementById('root');
+ReactDOM.render(<App />, root);

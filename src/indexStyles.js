@@ -31,4 +31,8 @@ export const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  .pac-logo:after {
+    content: initial;
+  }
 `;

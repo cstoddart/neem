@@ -15,7 +15,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Development'
+      template: './public/index.html',
+      favicon: './public/favicon.ico',
+      filename: './index.html',
     }),
     new webpack.HotModuleReplacementPlugin()
   ],
