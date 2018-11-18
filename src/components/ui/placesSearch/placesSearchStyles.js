@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 
+import { BORDER, BORDER_RADIUS, BOX_SHADOW, SPACING } from '../../../constants';
+
+export const StyledSearchBox = styled.div`
+  margin-bottom: ${SPACING.MEDIUM};
+`;
+
 export const Input = styled.input`
-  border: none;
-  width: 240px;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: ${BORDER};
+  width: 350px;
   font-size: 14px;
+  font-weight: bold;
+  padding: 15px 20px;
+  border-radius: ${BORDER_RADIUS};
+  box-shadow: ${BOX_SHADOW};
   outline: none;
-  text-overflow: ellipses;
+  line-height: 1;
+  text-overflow: ellipsis;
 `;
