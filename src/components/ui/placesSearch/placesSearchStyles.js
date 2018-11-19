@@ -4,11 +4,13 @@ import { BORDER, BORDER_RADIUS, BOX_SHADOW, SPACING } from '../../../constants';
 
 export const StyledSearchBox = styled.div`
   margin-bottom: ${SPACING.MEDIUM};
+  width: 100%;
 `;
 
 export const Input = styled.input`
   border: ${BORDER};
-  width: 350px;
+  width: 100%;
+  max-width: 500px;
   font-size: 14px;
   font-weight: bold;
   padding: 15px 20px;

@@ -3,10 +3,10 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 
 import { StyledMap, ContainerElement, MapElement } from './mapStyles';
 
-const InnerMap = withScriptjs(withGoogleMap((props) => (
+const ReactGoogleMap = withScriptjs(withGoogleMap(({ lat, lng}) => (
   <GoogleMap
-    zoom={props.address ? 15 : 6}
-    center={props.address || { lat: 32.779646, lng: -96.7977977 }}
+    zoom={(!!lat && !!lng) ? 15 : 6}
+    center={(!!lat && !!lng) ? { lat, lng } : { lat: 32.779646, lng: -96.7977977 }}
     defaultOptions={{
       zoomControl: false,
       mapTypeControl: false,
@@ -17,21 +17,22 @@ const InnerMap = withScriptjs(withGoogleMap((props) => (
       draggable: false,
     }}
   >
-    {props.showMarker && <Marker position={props.address} />}
+    {(!!lat && !!lng) && <Marker position={{ lat, lng }} />}
   </GoogleMap>
 )));
 
 export class Map extends Component {
   render() {
+    const { lat, lng } = this.props.address;
     return (
       <StyledMap>
-        <InnerMap
-          address={this.props.address}
+        <ReactGoogleMap
+          lat={lat}
+          lng={lng}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<ContainerElement />}
           mapElement={<MapElement />}
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoGnPf2a_sSJODSIwaHF3QajDZ_Pqe2DI&v=3.exp&libraries=geometry,drawing,places"
-          showMarker
         />
       </StyledMap>
     );

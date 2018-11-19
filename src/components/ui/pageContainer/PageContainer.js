@@ -8,7 +8,7 @@ export const PageContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 50px 0;
+  padding: 35px 0;
   width: 90%;
   max-width: ${SITE_WIDTH};
   margin: 0 auto;

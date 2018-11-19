@@ -1,7 +1,10 @@
-import styled from 'styled-components';
+import React from 'react';
 
-import { SPACING } from '../../../constants';
+import { StyledPageHeader, Title, Subtitle } from './pageHeaderStyles';
 
-export const PageHeader = styled.div`
-  margin-bottom: ${SPACING.MEDIUM};
-`;
+export const PageHeader = (props) => (
+  <StyledPageHeader>
+    <Title>{props.title}</Title>
+    <Subtitle>{props.subtitle}</Subtitle>
+  </StyledPageHeader>
+);

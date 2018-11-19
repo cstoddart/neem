@@ -1,8 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 import { Row } from '../row/Row';
-
 import {
   StyledNavigation,
   Logo,
@@ -12,6 +10,7 @@ import {
   Dash,
   XButton,
 } from './navigationStyles';
+import X from '../../../assets/images/x.svg';
 
 const Steps = () => (
   <StyledSteps>
@@ -41,14 +40,12 @@ const Steps = () => (
   </StyledSteps>
 );
 
-const Navigation = () => (
+export const Navigation = () => (
   <StyledNavigation>
     <Row>
-      <Logo>Leeif</Logo>
+      <Logo to="/">Leeif</Logo>
       <Steps />
-      <XButton>X</XButton>
+      <XButton to="/"><img src={X} /></XButton>
     </Row>
   </StyledNavigation>
 );
-
-export default Navigation;

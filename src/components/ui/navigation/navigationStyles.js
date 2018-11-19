@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import { BORDER, BOX_SHADOW, COLORS } from '../../../constants';
 
 export const StyledNavigation = styled.div`
   width: 100%;
   background-color: white;
-  box-shadow: ${BOX_SHADOW};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,9 +13,11 @@ export const StyledNavigation = styled.div`
   border-bottom: ${BORDER};
 `;
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
   font-size: 35px;
   font-weight: bold;
+  z-index: 1;
+  color: ${COLORS.TEXT};
 `;
 
 export const StyledSteps = styled.div`
@@ -34,8 +35,8 @@ export const StyledNavLink = styled(NavLink)`
   align-items: center;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
+  font-size: 13px;
+  letter-spacing: 2px;
   color: ${COLORS.TEXT_LIGHT};
 
   &.active {
@@ -45,15 +46,17 @@ export const StyledNavLink = styled(NavLink)`
 
 export const NumberCircle = styled.span`
   line-height: 1;
-  border: 1px solid ${COLORS.TEXT_LIGHT};
+  border: 1.5px solid ${COLORS.TEXT_LIGHT};
   border-radius: 100px;
   height: 20px;
   width: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  margin: 0 5px;
+  font-size: 11px;
+  margin-right: 7px;
+  padding-left: 2px;
+  padding-bottom: 2px;
 
   .active & {
     background-color: ${COLORS.GREEN};
@@ -62,10 +65,11 @@ export const NumberCircle = styled.span`
   }
 `;
 
-export const XButton = styled.div`
+export const XButton = styled(Link)`
   font-size: 24px;
   font-weight: bold;
   color: red;
+  z-index: 1;
 `;
 
 export const Dash = styled.div`

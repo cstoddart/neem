@@ -1,24 +1,41 @@
 import React, { Component } from 'react';
 
-import { Map, PageContainer, PageHeader, PlacesSearch, Button } from '../ui';
+import { AppContext } from '../../AppContext';
+import {
+  Map,
+  PageContainer,
+  PageHeader,
+  PlacesSearch,
+} from '../ui';
+import { StyledButton } from './addressStyles';
 
 export class Address extends Component {
+  static contextType = AppContext;
+
   state = {
     address: undefined,
+    lat: undefined,
+    lng: undefined,
   };
 
-  setAddress = (address) => this.setState({ address });
+  setAddress = ({ address, lat, lng }) => {
+    console.log('CONTEXT', this.context);
+    this.setState({ lat, lng });
+    this.context.updateOrder({ order: { address } });
+  };
 
   render() {
+    const { lat, lng } = this.state;
+    console.log('aa', lat, lng);
     return(
       <PageContainer>
-        <PageHeader>
-          <h1>Enter Your Home Address</h1>
-          <h5>This will allow us to locate your home & estimate your lot if you need help.</h5>
-        </PageHeader>
+        <PageHeader
+          title="Enter Your Home Address"
+          subtitle="This will allow us to locate your home & estimate your lot size"
+        />
         <PlacesSearch handleChange={this.setAddress} />
-        <Map address={this.state.address} />
-        <Button to="/date-time">Date + Time</Button>
+        <Map address={{ lat, lng }} />
+        <StyledButton to="/date-time">Date + Time</StyledButton>
       </PageContainer>
     );
   }
