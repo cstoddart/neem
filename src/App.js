@@ -7,7 +7,7 @@ import { Navigation } from './components/ui';
 import { Address } from './components/address/Address';
 import { Payment } from './components/payment/Payment';
 import { DateTime } from './components/dateTime/DateTime';
-import { GlobalStyles } from './indexStyles';
+import { GlobalStyles } from './appStyles';
 
 class App extends Component {
   constructor() {
