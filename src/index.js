@@ -23,7 +23,7 @@ class App extends Component {
         date: '',
         services: '',
       },
-      updateOrder: updateOrder,
+      updateOrder,
     };
   }
 

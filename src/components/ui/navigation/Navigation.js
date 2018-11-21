@@ -10,7 +10,7 @@ import {
   Dash,
   XButton,
 } from './navigationStyles';
-import X from '../../../assets/images/x.svg';
+import XImg from '../../../assets/images/x.svg';
 
 const Steps = () => (
   <StyledSteps>
@@ -45,7 +45,7 @@ export const Navigation = () => (
     <Row>
       <Logo to="/">Leeif</Logo>
       <Steps />
-      <XButton to="/"><img src={X} /></XButton>
+      <XButton to="/"><img src={XImg} /></XButton>
     </Row>
   </StyledNavigation>
 );
