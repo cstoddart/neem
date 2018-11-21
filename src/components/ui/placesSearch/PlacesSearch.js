@@ -31,10 +31,12 @@ export class PlacesSearch extends Component {
 
   handleChange = () => {
     const place = this.state.searchBoxRef.getPlaces();
+    console.log('PLACE', place);
+    const address = place[0].formatted_address;
     const lat = place[0].geometry.location.lat();
     const lng = place[0].geometry.location.lng();
 
-    this.props.handleChange({ lat, lng });
+    this.props.handleChange({ address, lat, lng });
   }
 
   render() {

@@ -19,14 +19,13 @@ export class Address extends Component {
   };
 
   setAddress = ({ address, lat, lng }) => {
-    console.log('CONTEXT', this.context);
-    this.setState({ lat, lng });
-    this.context.updateOrder({ order: { address } });
+    this.setState({ address, lat, lng });
+    this.context.updateOrder({ order: { address, lat, lng } });
   };
 
   render() {
     const { lat, lng } = this.state;
-    console.log('aa', lat, lng);
+    console.log('CONTEXT', this.context);
     return(
       <PageContainer>
         <PageHeader
