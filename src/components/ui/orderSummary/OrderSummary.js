@@ -37,6 +37,10 @@ export class OrderSummary extends Component {
                 : '--'
             }</SummaryPointDetails>
           </SummaryPoint>
+          <SummaryPoint>
+            <SummaryPointTitle>Subscription Options -</SummaryPointTitle>
+            <SummaryPointDetails>{this.context.order.frequency || '--'}</SummaryPointDetails>
+          </SummaryPoint>
         </AddressSummary>
         <CostSummary>
           <SummaryPoint>

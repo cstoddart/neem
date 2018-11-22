@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { COLORS, BORDER_RADIUS_SMALL } from '../../../constants';
+import arrowGreen from '../../../assets/images/arrow-green.svg';
 import arrow from '../../../assets/images/arrow.svg';
 
 export const Button = styled(Link)`
@@ -11,9 +12,19 @@ export const Button = styled(Link)`
   font-weight: bold;
   border-radius: ${BORDER_RADIUS_SMALL};
   display: inline-block;
+  border: 3px solid ${COLORS.GREEN};
 
   &:after {
     content: url(${arrow});
     margin-left: 10px;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: ${COLORS.GREEN};
+  }
+
+  &:hover:after {
+    content: url(${arrowGreen});
   }
 `;

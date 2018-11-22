@@ -5,5 +5,6 @@ export { Navigation } from './navigation/Navigation';
 export { OrderSummary } from './orderSummary/OrderSummary';
 export { PageContainer } from './pageContainer/PageContainer';
 export { PageHeader } from './pageHeader/PageHeader';
+export { PaymentInput } from './paymentInput/PaymentInput';
 export { PlacesSearch } from './placesSearch/PlacesSearch';
 export { SectionHeader } from './sectionHeader/SectionHeader';

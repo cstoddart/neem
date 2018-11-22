@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { StripeProvider } from 'react-stripe-elements';
 
 import { AppContext } from './AppContext';
 import { Navigation } from './components/ui';
@@ -36,14 +37,16 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <AppContext.Provider value={this.state}>
-          <GlobalStyles />
-          <Navigation />
-          <Route exact path="/" render={() => <Redirect to="/address" />} />
-          <Route path="/address" render={() => <Address />} />
-          <Route path="/date-time" render={() => <DateTime />} />
-          <Route path="/payment" render={() => <Payment />} />
-        </AppContext.Provider>
+        <StripeProvider apiKey="pk_test_bYk0WG2byZHmv3YbPiMdpL8U">
+          <AppContext.Provider value={this.state}>
+            <GlobalStyles />
+            <Navigation />
+            <Route exact path="/" render={() => <Redirect to="/address" />} />
+            <Route path="/address" render={() => <Address />} />
+            <Route path="/date-time" render={() => <DateTime />} />
+            <Route path="/payment" render={() => <Payment />} />
+          </AppContext.Provider>
+        </StripeProvider>
       </BrowserRouter>
     );
   }
