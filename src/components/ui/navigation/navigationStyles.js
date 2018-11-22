@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
 
-import { BORDER, BOX_SHADOW, COLORS } from '../../../constants';
+import { BORDER, BOX_SHADOW, COLORS, SITE_WIDTH } from '../../../constants';
 
 export const StyledNavigation = styled.div`
   width: 100%;
@@ -9,8 +9,17 @@ export const StyledNavigation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
   border-bottom: ${BORDER};
+`;
+
+export const NavigationContent = styled.div`
+  width: 90%;
+  max-width: ${SITE_WIDTH};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 15px 0;
 `;
 
 export const Logo = styled(Link)`

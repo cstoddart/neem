@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Row } from '../row/Row';
 import {
   StyledNavigation,
+  NavigationContent,
   Logo,
   StyledSteps,
   StyledNavLink,
@@ -42,10 +42,10 @@ const Steps = () => (
 
 export const Navigation = () => (
   <StyledNavigation>
-    <Row>
+    <NavigationContent>
       <Logo to="/">Leeif</Logo>
       <Steps />
       <XButton to="/"><img src={XImg} /></XButton>
-    </Row>
+    </NavigationContent>
   </StyledNavigation>
 );

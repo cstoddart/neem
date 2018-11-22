@@ -18,6 +18,7 @@ const SearchBox = withScriptjs((props, ref) => (
     <Input
       type="text"
       placeholder="Enter your address..."
+      defaultValue={props.defaultValue}
     />
   </StandaloneSearchBox>
 ));
@@ -48,6 +49,7 @@ export class PlacesSearch extends Component {
           containerElement={<div style={{ height: `400px` }} />}
           handleChange={this.handleChange}
           setSearchBoxRef={this.setSearchBoxRef}
+          defaultValue={this.props.defaultValue}
         />
       </StyledSearchBox>
     );

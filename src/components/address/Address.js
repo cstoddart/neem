@@ -13,14 +13,14 @@ export class Address extends Component {
   static contextType = AppContext;
 
   state = {
-    address: undefined,
-    lat: undefined,
-    lng: undefined,
+    address: this.context.order.address,
+    lat: this.context.order.lat,
+    lng: this.context.order.lng,
   };
 
   setAddress = ({ address, lat, lng }) => {
     this.setState({ address, lat, lng });
-    this.context.updateOrder({ order: { address, lat, lng } });
+    this.context.updateOrder(this.context.order, { address, lat, lng });
   };
 
   render() {
@@ -32,7 +32,7 @@ export class Address extends Component {
           title="Enter Your Home Address"
           subtitle="This will allow us to locate your home & estimate your lot size"
         />
-        <PlacesSearch handleChange={this.setAddress} />
+        <PlacesSearch handleChange={this.setAddress} defaultValue={this.state.address} />
         <Map address={{ lat, lng }} />
         <StyledButton to="/date-time">Date + Time</StyledButton>
       </PageContainer>

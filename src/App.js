@@ -13,15 +13,21 @@ class App extends Component {
   constructor() {
     super();
 
-    const updateOrder = (order) => {
-      this.setState({ order });
-    };
+    const updateOrder = (currentOrder, newOrder) => this.setState({
+      order: {
+        ...currentOrder,
+        ...newOrder,
+      },
+    });
 
     this.state = {
       order: {
         address: '',
-        date: '',
-        services: '',
+        lat: '',
+        lng: '',
+        day: '',
+        time: '',
+        frequency: '',
       },
       updateOrder,
     };
