@@ -1,4 +1,4 @@
-/.firebase
+.firebase
 node_modules
 dist
-*/keys.js
+src/keys.js
