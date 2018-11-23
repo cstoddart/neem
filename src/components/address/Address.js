@@ -30,7 +30,7 @@ export class Address extends Component {
       <PageContainer>
         <PageHeader
           title="Enter Your Home Address"
-          subtitle="This will allow us to locate your home & estimate your lot size"
+          subtitle="We use this to locate your home ensuring you are within range."
         />
         <PlacesSearch handleChange={this.setAddress} defaultValue={this.state.address} />
         <Map address={{ lat, lng }} />

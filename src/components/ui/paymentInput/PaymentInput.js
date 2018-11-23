@@ -7,15 +7,21 @@ import {
   CardCVCElement,
   PostalCodeElement
 } from 'react-stripe-elements';
+import axios from 'axios';
 
 import { FIREBASE_FUNCTION_URL } from '../../../keys';
 
 class PaymentForm extends Component {
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     console.log('EVENT', event.target);
     event.preventDefault();
-    this.props.stripe.createToken({ name: 'Test Name' }).then((result) => {
-      console.log('Received Stripe token:', result);
+    const { token } = await this.props.stripe.createToken({ name: 'Test Name' });
+    console.log('TOKEN', token);
+    axios.post(FIREBASE_FUNCTION_URL, {
+      token,
+      charge: {
+        boats: 'hoes',
+      },
     });
   };
 
