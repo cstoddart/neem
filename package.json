@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode=development --host 0.0.0.0 --port 3000",
     "build": "webpack --mode=production",
-    "serve": "firebase serve --host 0.0.0.0 --port 3000"
+    "serve": "firebase serve --host 0.0.0.0 --port 3000",
+    "deploy": "npm run build && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/plugin-transform-react-jsx": "^7.1.6",
+    "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "axios": "0.18.0",
