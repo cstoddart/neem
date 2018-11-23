@@ -8,6 +8,8 @@ import {
   PostalCodeElement
 } from 'react-stripe-elements';
 
+import { FIREBASE_FUNCTION_URL } from '../../../keys';
+
 class PaymentForm extends Component {
   handleSubmit = (event) => {
     console.log('EVENT', event.target);

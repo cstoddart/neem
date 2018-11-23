@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { StripeProvider } from 'react-stripe-elements';
 
+import { STRIPE_PUBLIC_KEY } from './keys.js';
 import { AppContext } from './AppContext';
 import { Navigation } from './components/ui';
 import { Address } from './components/address/Address';
@@ -37,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <StripeProvider apiKey="pk_test_bYk0WG2byZHmv3YbPiMdpL8U">
+        <StripeProvider apiKey="">
           <AppContext.Provider value={this.state}>
             <GlobalStyles />
             <Navigation />

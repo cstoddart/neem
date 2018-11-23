@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
+import { GOOGLE_API_KEY } from '../../../keys';
 import { StyledMap, ContainerElement, MapElement } from './mapStyles';
 
 const ReactGoogleMap = withScriptjs(withGoogleMap(({ lat, lng}) => (
@@ -32,7 +33,7 @@ export class Map extends Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<ContainerElement />}
           mapElement={<MapElement />}
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4vgUqDvYaZk08PqoBRlvGMWKe2m28tiQ&v=3.exp&libraries=geometry,drawing,places"
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
         />
       </StyledMap>
     );
