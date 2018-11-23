@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 import { StyledMap, ContainerElement, MapElement } from './mapStyles';
 
@@ -32,7 +32,7 @@ export class Map extends Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<ContainerElement />}
           mapElement={<MapElement />}
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoGnPf2a_sSJODSIwaHF3QajDZ_Pqe2DI&v=3.exp&libraries=geometry,drawing,places"
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4vgUqDvYaZk08PqoBRlvGMWKe2m28tiQ&v=3.exp&libraries=geometry,drawing,places"
         />
       </StyledMap>
     );
