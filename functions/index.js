@@ -9,6 +9,7 @@ const app = express();
 const stripe = require('stripe')(functions.config().stripe.token);
 
 function charge(req, res) {
+  console.log('@charge...');
   const body = JSON.parse(req.body);
   const token = body.token.id;
   const amount = body.charge.amount;
@@ -43,7 +44,7 @@ function send(res, code, body) {
 
 app.use(cors);
 app.post('/', (req, res) => {
-
+  console.log('AT POST...');
   // Catch any unexpected errors to prevent crashing
   try {
     charge(req, res);
