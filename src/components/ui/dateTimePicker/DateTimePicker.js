@@ -6,6 +6,7 @@ import isToday from 'date-fns/is_today';
 import isSameDay from 'date-fns/is_same_day';
 import isLastDayOfMonth from 'date-fns/is_last_day_of_month';
 
+import { TIME_OPTIONS, FREQUENCY_OPTIONS } from '../../../constants';
 import { SectionHeader } from '../';
 import { 
   StyledDatePicker,
@@ -60,22 +61,22 @@ const TimeOptions = ({ selectedTime, selectTime }) => (
     <SectionHeader>Select Your Open Times</SectionHeader>
     <TimeOptionsContent>
       <TimeOption
-        onClick={() => selectTime('7am to 12pm')}
-        isSelected={selectedTime === '7am to 12pm'}
+        onClick={() => selectTime(TIME_OPTIONS.MORNING)}
+        isSelected={selectedTime === TIME_OPTIONS.MORNING}
       >
         <Time>7am - 12pm</Time>
         <TimeLabel>Morning</TimeLabel>
       </TimeOption>
       <TimeOption
-        onClick={() => selectTime('12pm to 6pm')}
-        isSelected={selectedTime === '12pm to 6pm'}
+        onClick={() => selectTime(TIME_OPTIONS.AFTERNOON)}
+        isSelected={selectedTime === TIME_OPTIONS.AFTERNOON}
       >
         <Time>12pm - 6pm</Time>
         <TimeLabel>Midday/Evening</TimeLabel>
       </TimeOption>
       <TimeOption
-        onClick={() => selectTime('7am to 6pm')}
-        isSelected={selectedTime === '7am to 6pm'}
+        onClick={() => selectTime(TIME_OPTIONS.ALL_DAY)}
+        isSelected={selectedTime === TIME_OPTIONS.ALL_DAY}
       >
         <Time>7am - 6pm</Time>
         <TimeLabel>All Day</TimeLabel>
@@ -89,31 +90,31 @@ const FrequencyOptions = ({ selectedFrequency, selectFrequency }) => (
     <SectionHeader>Subscription Options</SectionHeader>
     <FrequencyOptionsContent>
       <FrequencyOption
-        onClick={() => selectFrequency('EVERY_WEEK')}
-        isSelected={selectedFrequency === 'EVERY_WEEK'}
+        onClick={() => selectFrequency(FREQUENCY_OPTIONS.EVERY_WEEK)}
+        isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_WEEK}
       >
-        <FrequencyCheckBox isSelected={selectedFrequency === 'EVERY_WEEK'} />
+        <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_WEEK} />
         Repeat Every Week
       </FrequencyOption>
       <FrequencyOption
-        onClick={() => selectFrequency('EVERY_TWO_WEEKS')}
-        isSelected={selectedFrequency === 'EVERY_TWO_WEEKS'}
+        onClick={() => selectFrequency(FREQUENCY_OPTIONS.EVERY_TWO_WEEKS)}
+        isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_TWO_WEEKS}
       >
-        <FrequencyCheckBox isSelected={selectedFrequency === 'EVERY_TWO_WEEKS'} />
+        <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_TWO_WEEKS} />
         Repeat Every Two Weeks
       </FrequencyOption>
       <FrequencyOption
-        onClick={() => selectFrequency('EVERY_THREE_WEEKS')}
-        isSelected={selectedFrequency === 'EVERY_THREE_WEEKS'}
+        onClick={() => selectFrequency(FREQUENCY_OPTIONS.EVERY_THREE_WEEKS)}
+        isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_THREE_WEEKS}
       >
-        <FrequencyCheckBox isSelected={selectedFrequency === 'EVERY_THREE_WEEKS'} />
+        <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_THREE_WEEKS} />
         Repeat Every Three Weeks
       </FrequencyOption>
       <FrequencyOption
-        onClick={() => selectFrequency('EVERY_MONTH')}
-        isSelected={selectedFrequency === 'EVERY_MONTH'}
+        onClick={() => selectFrequency(FREQUENCY_OPTIONS.EVERY_MONTH)}
+        isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_MONTH}
       >
-        <FrequencyCheckBox isSelected={selectedFrequency === 'EVERY_MONTH'} />
+        <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_MONTH} />
         Repeat Every Month
       </FrequencyOption>
     </FrequencyOptionsContent>

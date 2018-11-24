@@ -1,3 +1,4 @@
+// styles
 export const COLORS = {
   TEXT: '#000',
   TEXT_LIGHT: '#7f7f7f',
@@ -17,3 +18,16 @@ export const BORDER_RADIUS = '5px';
 export const BORDER_RADIUS_SMALL = '3px';
 export const BOX_SHADOW = '0 2.5px 7.5px 0 rgba(0, 0, 0, 0.1)';
 export const SITE_WIDTH = '1200px';
+
+// state
+export const TIME_OPTIONS = {
+  MORNING: '7am - 12pm',
+  AFTERNOON: '12pm - 6pm',
+  ALL_DAY: '7am - 6pm',
+};
+export const FREQUENCY_OPTIONS = {
+  EVERY_WEEK: 'Repeat Every Week',
+  EVERY_TWO_WEEKS: 'Repeat Every Two Weeks',
+  EVERY_THREE_WEEKS: 'Repeat Every Three Weeks',
+  EVERY_MONTH: 'REPEAT_EVERY_MONTH',
+};
