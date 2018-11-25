@@ -29,5 +29,5 @@ export const FREQUENCY_OPTIONS = {
   EVERY_WEEK: 'Repeat Every Week',
   EVERY_TWO_WEEKS: 'Repeat Every Two Weeks',
   EVERY_THREE_WEEKS: 'Repeat Every Three Weeks',
-  EVERY_MONTH: 'REPEAT_EVERY_MONTH',
+  EVERY_MONTH: 'Repeat Every Month',
 };
