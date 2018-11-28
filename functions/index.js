@@ -1,60 +1,38 @@
 const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-admin.initializeApp(functions.config().firebase);
 const express = require('express');
-const cors = require('cors')({origin: true});
-const app = express();
-
-// TODO: Remember to set token using >> firebase functions:config:set stripe.token="SECRET_STRIPE_TOKEN_HERE"
+const cors = require('cors');
 const stripe = require('stripe')(functions.config().stripe.token);
 
-function charge(req, res) {
-  console.log('@charge...');
-  const body = JSON.parse(req.body);
-  const token = body.token.id;
-  const amount = body.charge.amount;
-  const currency = body.charge.currency;
+const app = express();
 
-  // Charge card
+app.use(cors({ origin: true }));
+
+app.post('/', (request, response) => {
+  const body = request.body;
+  const tokenId = body.token.id;
+  const amount = body.amount;
+  const currency = body.currency;
+  const description = body.chargeDescription;
+
   stripe.charges.create({
     amount,
     currency,
-    description: 'Firebase Example',
-    source: token,
-  }).then(charge => {
-    return send(res, 200, {
-      message: 'Success',
-      charge,
-    });
-  }).catch(err => {
-    console.log(err);
-    return send(res, 500, {
-      error: err.message,
-    });
+    description,
+    source: tokenId,
   });
-}
-
-function send(res, code, body) {
-  return res.send({
-    statusCode: code,
-    headers: {'Access-Control-Allow-Origin': '*'},
-    body: JSON.stringify(body),
-  });
-}
-
-app.use(cors);
-app.post('/', (req, res) => {
-  console.log('AT POST...');
-  // Catch any unexpected errors to prevent crashing
-  try {
-    charge(req, res);
-  } catch(e) {
-    console.log(e);
-    send(res, 500, {
-      error: `The server received an unexpected error. Please try again and contact the site admin if the error persists.`,
-    });
-  }
-  return;
 });
 
-exports.charge = functions.https.onRequest(app);
+const firebasePathPatch = (app) => (req, res) => {
+  // patch from https://github.com/firebase/firebase-functions/issues/27#issuecomment-292768599
+  // https://some-firebase-app-id.cloudfunctions.net/route
+  // without trailing "/" will have req.path = null, req.url = null
+  // which won't match to your app.get('/', ...) route 
+  if (!req.path) {
+    // prepending "/" keeps query params, path params intact
+    req.url = `/${req.url}`
+  }
+  return app(req, res);
+}
+
+module.exports.stripe = functions.https.onRequest(firebasePathPatch(app));
+
