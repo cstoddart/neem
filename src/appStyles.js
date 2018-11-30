@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import LatoRegular from './assets/fonts/Lato-Regular.ttf';
 import LatoBold from './assets/fonts/Lato-Bold.ttf';
 
+import { COLORS } from './constants';
+
 export const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'Lato';
@@ -37,6 +39,14 @@ export const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+  }
+
+  input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: ${COLORS.TEXT_LIGHT};
+    font-weight: bold;
   }
 
   .pac-logo:after {

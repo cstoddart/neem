@@ -1,30 +1,10 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
 
-import { COLORS, BORDER_RADIUS_SMALL } from '../../../constants';
-import arrowGreen from '../../../assets/images/arrow-green.svg';
-import arrow from '../../../assets/images/arrow.svg';
+import { LinkButton, OnClickButton } from './buttonStyles';
 
-export const Button = styled(Link)`
-  background: ${COLORS.GREEN};
-  color: white;
-  padding: 15px 25px;
-  font-weight: bold;
-  border-radius: ${BORDER_RADIUS_SMALL};
-  display: inline-block;
-  border: 3px solid ${COLORS.GREEN};
-
-  &:after {
-    content: url(${arrow});
-    margin-left: 10px;
-  }
-
-  &:hover {
-    background-color: transparent;
-    color: ${COLORS.GREEN};
-  }
-
-  &:hover:after {
-    content: url(${arrowGreen});
-  }
-`;
+export const Button = ({ onClick, to, children }) => (
+  <Fragment>
+    {to && <LinkButton to={to}>{children}</LinkButton>}
+    {onClick && <OnClickButton onClick={onClick}>{children}</OnClickButton>}
+  </Fragment>
+);

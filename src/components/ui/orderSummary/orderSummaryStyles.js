@@ -12,7 +12,7 @@ export const StyledOrderSummary = styled.div`
 `;
 
 const SummaryBox = styled.div`
-  padding: 25px;
+  padding: 15px 25px;
   border-radius: ${BORDER_RADIUS_SMALL};
   
   &:not(:last-of-type) {

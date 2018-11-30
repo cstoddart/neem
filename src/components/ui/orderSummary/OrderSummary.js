@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import format from 'date-fns/format';
 
 import { AppContext } from '../../../AppContext';
-import { SectionHeader } from '../';
+import {
+  SectionContainer,
+  SectionHeader,
+} from '../';
 import {
   StyledOrderSummary,
   AddressSummary,
@@ -18,7 +21,7 @@ export class OrderSummary extends Component {
 
   render() {
     return (
-      <StyledOrderSummary>
+      <SectionContainer>
         <SectionHeader>Order Summary</SectionHeader>
         <AddressSummary>
           <SummaryPoint>
@@ -55,7 +58,7 @@ export class OrderSummary extends Component {
             <SummaryPointTitle>Final Payment -</SummaryPointTitle>
           </SummaryPoint>
         </OrderTotal>
-      </StyledOrderSummary>
+      </SectionContainer>
     );
   }
 }

@@ -7,8 +7,11 @@ import isSameDay from 'date-fns/is_same_day';
 import isLastDayOfMonth from 'date-fns/is_last_day_of_month';
 
 import { TIME_OPTIONS, FREQUENCY_OPTIONS } from '../../../constants';
-import { SectionHeader } from '../';
-import { 
+import {
+  SectionContainer, 
+  SectionHeader,
+} from '../';
+import {
   StyledDatePicker,
   Days,
   StyledDay,
@@ -141,7 +144,7 @@ export class DateTimePicker extends Component {
 
   render() {
     return (
-      <StyledDatePicker>
+      <SectionContainer>
         <SectionHeader>Select Your Date</SectionHeader>
         <Days>
           {this.state.dates.map((date, index) => (
@@ -168,7 +171,7 @@ export class DateTimePicker extends Component {
             />
           </Fragment>
         }
-      </StyledDatePicker>
+      </SectionContainer>
     );
   }
 }

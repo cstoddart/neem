@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 
-import { PageContainer, PaymentInput } from '../ui';
+import {
+  PageContainer,
+  PageHeader,
+  PageContent,
+  PaymentForm,
+  OrderSummary,
+} from '../ui';
+import {
+  PaymentContent,
+} from './paymentStyles';
 
 export class Payment extends Component {
   render() {
     return (
       <PageContainer>
-        <PaymentInput />
+        <PageHeader
+          title="Complete Your Payment"
+          subtitle="Submit your payment and we’ll scedule our Leeifer pro to come out"
+        />
+        <PageContent>
+          <PaymentForm />
+          <OrderSummary />
+        </PageContent>
       </PageContainer>
     );
   }
