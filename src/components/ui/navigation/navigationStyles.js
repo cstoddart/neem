@@ -64,7 +64,6 @@ export const NumberCircle = styled.span`
   font-size: 11px;
   margin-right: 7px;
   padding-left: 2px;
-  padding-bottom: 2px;
 
   .active & {
     background-color: ${COLORS.GREEN};
