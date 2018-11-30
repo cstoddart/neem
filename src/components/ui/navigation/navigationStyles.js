@@ -24,7 +24,6 @@ export const NavigationContent = styled.div`
 
 export const Logo = styled(Link)`
   font-size: 35px;
-  font-weight: bold;
   z-index: 1;
   color: ${COLORS.TEXT};
 `;

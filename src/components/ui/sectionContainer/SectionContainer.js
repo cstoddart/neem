@@ -7,4 +7,5 @@ export const SectionContainer = styled.div`
   align-items: stretch;
   text-align: left;
   width: 100%;
+  position: relative;
 `;

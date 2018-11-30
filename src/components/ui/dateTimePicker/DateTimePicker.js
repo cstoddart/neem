@@ -12,7 +12,6 @@ import {
   SectionHeader,
 } from '../';
 import {
-  StyledDatePicker,
   Days,
   StyledDay,
   DayOfWeek,
