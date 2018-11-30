@@ -1,26 +1,26 @@
 import { createGlobalStyle } from 'styled-components';
-import LatoRegular from './assets/fonts/Lato-Regular.ttf';
-import LatoBold from './assets/fonts/Lato-Bold.ttf';
+import Formular from './assets/fonts/Formular.ttf';
+import FormularBold from './assets/fonts/Formular-Bold.ttf';
 
 import { COLORS } from './constants';
 
 export const GlobalStyles = createGlobalStyle`
   @font-face {
-    font-family: 'Lato';
-    src: url(${LatoRegular});
+    font-family: 'Formular';
+    src: url(${Formular});
     font-weight: normal;
     font-display: fallback;
   }
 
   @font-face {
-    font-family: 'Lato';
-    src: url(${LatoBold});
+    font-family: 'Formular';
+    src: url(${FormularBold});
     font-weight: bold;
     font-display: fallback;
   }
 
   body {
-    font-family: 'Lato';
+    font-family: 'Formular';
     margin: 0;
   }
 
