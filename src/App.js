@@ -28,9 +28,13 @@ class App extends Component {
         address: '',
         lat: '',
         lng: '',
+        lotSize: '',
         day: '',
         time: '',
         frequency: '',
+        subtotal: 0,
+        taxes: 0,
+        total: 0,
       },
       updateOrder,
     };

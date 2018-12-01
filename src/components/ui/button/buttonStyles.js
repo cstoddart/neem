@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { COLORS, BORDER_RADIUS_SMALL } from '../../../constants';
-import arrowGreen from '../../../assets/images/arrow-green.svg';
+import arrowGreen from '../../../assets/images/arrowGreen.svg';
 import arrow from '../../../assets/images/arrow.svg';
 
 const buttonStyles = `

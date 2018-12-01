@@ -1,10 +1,51 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { BORDER, BORDER_RADIUS, BOX_SHADOW, SPACING } from '../../../constants';
+import arrow from '../../../assets/images/arrow.svg';
+import arrowGreen from '../../../assets/images/arrowGreen.svg';
+import {
+  BORDER,
+  BORDER_RADIUS,
+  BOX_SHADOW,
+  SPACING,
+  COLORS,
+} from '../../../constants';
 
 export const StyledSearchBox = styled.div`
   margin-bottom: ${SPACING.MEDIUM};
   width: 100%;
+  max-width: 500px;
+  position: relative;
+`;
+
+export const SearchButton = styled(Link)`
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 75px;
+  background-color: ${COLORS.GREEN};
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: ${BORDER_RADIUS};
+  border-bottom-right-radius: ${BORDER_RADIUS};
+  outline: 0;
+
+  &:after {
+    content: url(${arrow});
+  }
+
+  &:hover {
+    background-color: white;
+    border: 2px solid ${COLORS.GREEN};
+
+    &:after {
+      content: url(${arrowGreen});
+    }
+  }
 `;
 
 export const Input = styled.input`

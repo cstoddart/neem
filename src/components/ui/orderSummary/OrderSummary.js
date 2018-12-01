@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import format from 'date-fns/format';
 
 import { AppContext } from '../../../AppContext';
+import { formatNumber } from '../../../utils';
 import {
   SectionContainer,
   SectionHeader,
 } from '../';
 import {
-  StyledOrderSummary,
+  EditButton,
   AddressSummary,
   CostSummary,
   OrderTotal,
@@ -24,6 +25,7 @@ export class OrderSummary extends Component {
       <SectionContainer>
         <SectionHeader>Order Summary</SectionHeader>
         <AddressSummary>
+          <EditButton to="/address">Change</EditButton>
           <SummaryPoint>
             <SummaryPointTitle>Home Address -</SummaryPointTitle>
             <SummaryPointDetails>{this.context.order.address || '--'}</SummaryPointDetails>
@@ -48,14 +50,17 @@ export class OrderSummary extends Component {
         <CostSummary>
           <SummaryPoint>
             <SummaryPointTitle>Subtotal -</SummaryPointTitle>
+            <SummaryPointDetails>{this.context.order.subtotal || '--'}</SummaryPointDetails>
           </SummaryPoint>
           <SummaryPoint>
             <SummaryPointTitle>State Tax & Fees -</SummaryPointTitle>
+            <SummaryPointDetails>{this.context.order.taxes || '--'}</SummaryPointDetails>
           </SummaryPoint>
         </CostSummary>
         <OrderTotal>
           <SummaryPoint>
             <SummaryPointTitle>Final Payment -</SummaryPointTitle>
+            <SummaryPointDetails>{this.context.order.total || '--'}</SummaryPointDetails>
           </SummaryPoint>
         </OrderTotal>
       </SectionContainer>

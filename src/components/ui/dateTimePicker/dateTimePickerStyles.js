@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { BORDER_RADIUS, COLORS } from '../../../constants';
-import arrowGrey from '../../../assets/images/arrow-grey.svg';
+import arrowGrey from '../../../assets/images/arrowGrey.svg';
 
 export const StyledDatePicker = styled.div`
   text-align: left;
