@@ -32,7 +32,7 @@ export class Address extends Component {
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(propertyDetails.data, "text/xml");
     const statusCode = xmlDoc.getElementsByTagName("code")[0].childNodes[0].nodeValue;
-    const netLotSize = statusCode === '0'
+    const netLotSize = statusCode === '0' && xmlDoc.getElementsByTagName("lotSizeSqFt")[0]
       ? xmlDoc.getElementsByTagName("lotSizeSqFt")[0].childNodes[0].nodeValue - 
         xmlDoc.getElementsByTagName("finishedSqFt")[0].childNodes[0].nodeValue
       : 0;
