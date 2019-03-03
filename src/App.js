@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import { StripeProvider } from 'react-stripe-elements';
-import "@babel/polyfill";
+import '@babel/polyfill';
 
 import { STRIPE_PUBLIC_KEY } from './keys';
 import { AppContext } from './AppContext';

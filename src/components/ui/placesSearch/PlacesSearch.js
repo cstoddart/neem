@@ -3,6 +3,7 @@ import { withScriptjs } from 'react-google-maps';
 import { StandaloneSearchBox } from 'react-google-maps/lib/components/places/StandaloneSearchBox';
 
 import { GOOGLE_API_KEY } from '../../../keys';
+import { ArrowIcon } from '../';
 import {
   StyledSearchBox,
   Input,
@@ -72,7 +73,9 @@ export class PlacesSearch extends Component {
           setSearchBoxRef={this.setSearchBoxRef}
           defaultValue={this.props.defaultValue}
         />
-        <SearchButton to={this.props.buttonTo} />
+        <SearchButton to={this.props.buttonTo}>
+          <ArrowIcon width={20} height={20} />
+        </SearchButton>
       </StyledSearchBox>
     );
   }

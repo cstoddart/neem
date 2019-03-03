@@ -82,7 +82,7 @@ export class Address extends Component {
           buttonTo="/date-time"
         />
         <Map address={{ lat, lng }} />
-        <StyledButton to="/date-time">Date + Time</StyledButton>
+        <StyledButton to="/date-time" showArrow>Date + Time</StyledButton>
       </PageContainer>
     );
   }

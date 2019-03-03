@@ -51,7 +51,7 @@ export class DateTime extends Component {
           />
           <OrderSummary />
         </PageContent>
-        <StyledButton to="/payment">Payment</StyledButton>
+        <StyledButton to="/payment" showArrow>Payment</StyledButton>
       </PageContainer>
     );
   }

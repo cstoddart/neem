@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import arrow from '../../../assets/images/arrow.svg';
-import arrowGreen from '../../../assets/images/arrowGreen.svg';
 import {
   BORDER,
   BORDER_RADIUS,
@@ -33,18 +31,12 @@ export const SearchButton = styled(Link)`
   border-top-right-radius: ${BORDER_RADIUS};
   border-bottom-right-radius: ${BORDER_RADIUS};
   outline: 0;
-
-  &:after {
-    content: url(${arrow});
-  }
+  color: white;
 
   &:hover {
     background-color: white;
     border: 2px solid ${COLORS.GREEN};
-
-    &:after {
-      content: url(${arrowGreen});
-    }
+    color: ${COLORS.GREEN};
   }
 `;
 

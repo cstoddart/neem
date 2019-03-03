@@ -6,16 +6,12 @@ import { StyledMap, ContainerElement, MapElement } from './mapStyles';
 
 const ReactGoogleMap = withScriptjs(withGoogleMap(({ lat, lng}) => (
   <GoogleMap
-    zoom={(!!lat && !!lng) ? 15 : 6}
+    zoom={(!!lat && !!lng) ? 20 : 15}
     center={(!!lat && !!lng) ? { lat, lng } : { lat: 32.779646, lng: -96.7977977 }}
     defaultOptions={{
-      zoomControl: false,
-      mapTypeControl: false,
-      scaleControl: false,
-      streetViewControl: false,
-      rotateControl: false,
-      fullscreenControl: false,
+      disableDefaultUI: true,
       draggable: false,
+      mapTypeId: window.google.maps.MapTypeId.SATELLITE,
     }}
   >
     {(!!lat && !!lng) && <Marker position={{ lat, lng }} />}

@@ -10,6 +10,7 @@ import { TIME_OPTIONS, FREQUENCY_OPTIONS } from '../../../constants';
 import {
   SectionContainer, 
   SectionHeader,
+  ArrowIcon,
 } from '../';
 import {
   Days,
@@ -17,6 +18,7 @@ import {
   DayOfWeek,
   DayOfMonth,
   BackToDateLink,
+  BackToDateArrow,
   StyledTimeOptions,
   TimeOptionsContent,
   TimeOption,
@@ -119,6 +121,13 @@ const FrequencyOptions = ({ selectedFrequency, selectFrequency }) => (
         <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_MONTH} />
         Repeat Every Month
       </FrequencyOption>
+      <FrequencyOption
+        onClick={() => selectFrequency(FREQUENCY_OPTIONS.NO_REPEAT)}
+        isSelected={selectedFrequency === FREQUENCY_OPTIONS.NO_REPEAT}
+      >
+        <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.NO_REPEAT} />
+        No, Maybe Next Time
+      </FrequencyOption>
     </FrequencyOptionsContent>
   </StyledFrequencyOptions>
 );
@@ -159,7 +168,12 @@ export class DateTimePicker extends Component {
         </Days>
         {this.state.currentStep === 'TIME' &&
           <Fragment>
-            <BackToDateLink onClick={this.backToDate}>Choose Another Date</BackToDateLink>
+            <BackToDateLink onClick={this.backToDate}>
+              <BackToDateArrow>
+                <ArrowIcon width={15} height={15} />
+              </BackToDateArrow>
+              Choose Another Date
+            </BackToDateLink>
             <TimeOptions
               selectedTime={this.props.selectedTime}
               selectTime={this.props.selectTime}

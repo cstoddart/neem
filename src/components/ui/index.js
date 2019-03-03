@@ -1,3 +1,4 @@
+export { ArrowIcon } from './arrowIcon/ArrowIcon';
 export { Button } from './button/Button';
 export { DateTimePicker } from './dateTimePicker/DateTimePicker';
 export { Input } from './input/Input';

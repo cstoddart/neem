@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { BORDER_RADIUS, COLORS } from '../../../constants';
-import arrowGrey from '../../../assets/images/arrowGrey.svg';
 
 export const StyledDatePicker = styled.div`
   text-align: left;
@@ -88,15 +87,17 @@ export const BackToDateLink = styled.h4`
   right: 0;
   color: ${COLORS.TEXT_LIGHT};
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   &:hover {
     opacity: 0.7;
   }
+`;
 
-  &:before {
-    content: url(${arrowGrey});
-    margin-right: 5px;
-  }
+export const BackToDateArrow = styled.div`
+  transform: rotate(180deg);
+  margin-right: 5px;
 `;
 
 export const StyledTimeOptions = styled.div`
