@@ -1,44 +1,45 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { StripeProvider } from 'react-stripe-elements';
 import '@babel/polyfill';
 
 import { STRIPE_PUBLIC_KEY } from './keys';
-import { AppContext } from './AppContext';
+import { AppContext, initialState, actions } from './AppContext';
 import { Navigation } from './components/ui';
 import { Address } from './components/address/Address';
 import { Payment } from './components/payment/Payment';
 import { DateTime } from './components/dateTime/DateTime';
+import { Login } from './components/login/Login';
 import { GlobalStyles } from './appStyles';
 
-class App extends Component {
-  constructor() {
-    super();
-
-    const updateOrder = (currentOrder, newOrder) => this.setState({
-      order: {
-        ...currentOrder,
-        ...newOrder,
-      },
-    });
-
-    this.state = {
-      order: {
-        address: '',
-        lat: '',
-        lng: '',
-        lotSize: '',
-        day: '',
-        time: '',
-        frequency: '',
-        subtotal: 0,
-        taxes: 0,
-        total: 0,
-      },
-      updateOrder,
-    };
+class PrivateRoute extends Component {
+  static contextType = AppContext;
+  
+  render() {
+    return this.context.loggedIn
+      ? <Route {...this.props} />
+      : <Redirect 
+        to={{
+          pathname: "/login",
+          state: { from: this.props.location },
+        }}
+      />
   }
+};
+
+class App extends Component {
+  state = {
+    ...initialState,
+    updateOrder: (order) => this.setState((state) => ({
+      order: {
+        ...state.order,
+        ...order,
+      },
+    })),
+    login: () => this.setState({ loggedIn: true }),
+    logout: () => this.setState({ loggedIn: false }),
+  };
 
   render() {
     return (
@@ -47,10 +48,13 @@ class App extends Component {
           <AppContext.Provider value={this.state}>
             <GlobalStyles />
             <Navigation />
-            <Route exact path="/" render={() => <Redirect to="/address" />} />
-            <Route path="/address" render={() => <Address />} />
-            <Route path="/date-time" render={() => <DateTime />} />
-            <Route path="/payment" render={() => <Payment />} />
+            <Switch>
+              <PrivateRoute exact path="/" render={() => <Redirect to="/address" />} />
+              <PrivateRoute path="/address" component={Address} />
+              <PrivateRoute path="/date-time" component={DateTime} />
+              <PrivateRoute path="/payment" component={Payment} />
+              <Route path="/login" component={Login} />
+            </Switch>
           </AppContext.Provider>
         </StripeProvider>
       </BrowserRouter>

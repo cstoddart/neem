@@ -21,11 +21,11 @@ const stripeElementStyle = {
   },
 };
 
-export const Input = ({ type = 'text', label, placeholder = '' }) => (
+export const Input = ({ type = 'text', label, placeholder = '', ...rest }) => (
   <Container>
     <Label>{label}</Label>
     <StyledInput>
-      {type === 'text' && <input placeholder={placeholder} />}
+      {type === 'text' && <input placeholder={placeholder} {...rest} />}
       {type === 'card' && <CardNumberElement style={stripeElementStyle} />}
       {type === 'expiry' && <CardExpiryElement style={stripeElementStyle} />}
       {type === 'cvc' && <CardCVCElement style={stripeElementStyle} />}

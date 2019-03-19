@@ -43,7 +43,7 @@ const Steps = () => (
 export const Navigation = () => (
   <StyledNavigation>
     <NavigationContent>
-      <Logo to="/">Leeif</Logo>
+      <Logo to="/">Neem</Logo>
       <Steps />
       <XButton to="/"><img src={XImg} /></XButton>
     </NavigationContent>

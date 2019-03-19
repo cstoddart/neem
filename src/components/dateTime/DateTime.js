@@ -23,17 +23,17 @@ export class DateTime extends Component {
 
   setSelectedDay = (day) => {
     this.setState({ selectedDay: day });
-    this.context.updateOrder(this.context.order, { day });
+    this.context.updateOrder({ day });
   }
 
   setSelectedTime = (time) => {
     this.setState({ selectedTime: time });
-    this.context.updateOrder(this.context.order, { time });
+    this.context.updateOrder({ time });
   };
 
   setSelectedFrequency = (frequency) => {
     this.setState({ selectedFrequency: frequency });
-    this.context.updateOrder(this.context.order, { frequency });
+    this.context.updateOrder({ frequency });
   }
 
   render() {

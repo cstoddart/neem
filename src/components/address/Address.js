@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { AppContext } from '../../AppContext';
-import { formatNumber } from '../../utils';
 import { ZILLOW_API_KEY } from '../../keys';
 import {
   Map,
@@ -57,7 +56,7 @@ export class Address extends Component {
         : '$26.00'
       : 0;
 
-    this.context.updateOrder(this.context.order, {
+    this.context.updateOrder({
       address,
       lat,
       lng,

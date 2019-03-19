@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import format from 'date-fns/format';
 
 import { AppContext } from '../../../AppContext';
-import { formatNumber } from '../../../utils';
+import { numberWithCommas } from '../../../utils';
 import {
   SectionContainer,
   SectionHeader,
@@ -32,7 +32,7 @@ export class OrderSummary extends Component {
           </SummaryPoint>
           <SummaryPoint>
             <SummaryPointTitle>Your Lot Size -</SummaryPointTitle>
-            <SummaryPointDetails>{this.context.order.lotSize || '--'}</SummaryPointDetails>
+            <SummaryPointDetails>{numberWithCommas(this.context.order.lotSize) || '--'}</SummaryPointDetails>
           </SummaryPoint>
           <SummaryPoint>
             <SummaryPointTitle>Service Date & Time -</SummaryPointTitle>
@@ -50,17 +50,17 @@ export class OrderSummary extends Component {
         <CostSummary>
           <SummaryPoint>
             <SummaryPointTitle>Subtotal -</SummaryPointTitle>
-            <SummaryPointDetails>{this.context.order.subtotal || '--'}</SummaryPointDetails>
+            <SummaryPointDetails>{numberWithCommas(this.context.order.subtotal) || '--'}</SummaryPointDetails>
           </SummaryPoint>
           <SummaryPoint>
             <SummaryPointTitle>State Tax & Fees -</SummaryPointTitle>
-            <SummaryPointDetails>{this.context.order.taxes || '--'}</SummaryPointDetails>
+            <SummaryPointDetails>{numberWithCommas(this.context.order.taxes) || '--'}</SummaryPointDetails>
           </SummaryPoint>
         </CostSummary>
         <OrderTotal>
           <SummaryPoint>
             <SummaryPointTitle>Final Payment -</SummaryPointTitle>
-            <SummaryPointDetails>{this.context.order.total || '--'}</SummaryPointDetails>
+            <SummaryPointDetails>{numberWithCommas(this.context.order.total) || '--'}</SummaryPointDetails>
           </SummaryPoint>
         </OrderTotal>
       </SectionContainer>
