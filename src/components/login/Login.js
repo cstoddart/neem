@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { AppContext } from '../../AppContext';
-import { login } from '../../services/auth0'
+import { login, getLoginResult } from '../../services/auth0'
 import {
   PageContainer,
   Input,
@@ -24,6 +24,7 @@ export class Login extends Component {
   handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
   
   render() {
+    getLoginResult();
     return(
       <PageContainer>
         <Input
