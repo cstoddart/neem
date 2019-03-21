@@ -1,12 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: {
-    app: ['@babel/polyfill', './src/App.js'],
-  },
+  entry: ['@babel/polyfill', './src/App.js'],
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
@@ -15,7 +12,6 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: './index.html',

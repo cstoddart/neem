@@ -31,7 +31,6 @@ export const Input = ({
     ...rest,
 }) => (
   <Container width={width}>
-    {console.log('INVERTED', inverted)}
     <Label>{label}</Label>
     <StyledInput inverted={inverted ? 1 : 0}>
       {type === 'text' && <input placeholder={placeholder} onChange={onChange} {...rest} />}
