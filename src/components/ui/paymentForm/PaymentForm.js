@@ -14,6 +14,18 @@ import {
 } from '../';
 
 class PaymentInputs extends Component {
+  state = {
+    cardNumber: '',
+    expiration: '',
+    securityCode: '',
+    email: '',
+    password: '',
+    name: '',
+    address: '',
+    unit: '',
+    state: '',
+    zip: '',
+  }
   handleSubmit = (event) => {
     console.log('EVENT', event.target);
     event.preventDefault();
@@ -37,25 +49,31 @@ class PaymentInputs extends Component {
       });
     })
   };
+  
+  handleChange = (event) => {
+    console.log('CHANGE...', event);
+  }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <InputRow>
-            <Input label="Cardholder Name" placeholder="Johnathan Hillcrest" />
-            <Input label="Email Address" placeholder="johnhillcrest@gmail.com" />
+          <Input onChange={this.handleChange} name="cardNumver" label="Card Number" placeholder="**** **** **** ****" width="50%" />
+          <Input onChange={this.handleChange} name="expiraion" label="Exp" placeholder="MM/YY" width="25%" />
+          <Input onChange={this.handleChange} name="securityCode" label="CVV" placeholder="***" width="25%" />
         </InputRow>
         <InputRow>
-          <Input label="Phone Number" placeholder="000.000.0000" />
-          <Input label="Password" placeholder="**********" />
+          <Input onChange={this.handleChange} name="email" label="Email Address" placeholder="johnathandoe@gmail.com" width="50%" inverted />
+          <Input onChange={this.handleChange} name="password" label="Create Password" placeholder="**********" width="50%" inverted />
         </InputRow>
         <InputRow>
-          <Input type="card" label="Credit Card Number" />
-          <Input type="expiry" label="Month / Year" />
+          <Input onChange={this.handleChange} name="name" label="Cardholder Name" placeholder="John Doe" width="50%" />
+          <Input onChange={this.handleChange} name="address" label="Full Street Address" placeholder="123 Neem Street" width="50%" />
         </InputRow>
         <InputRow>
-          <Input type="cvc" label="Security Code" />
-          <Input type="zip" label="Zip Code" />
+          <Input onChange={this.handleChange} name="unit" label="Apt, Floor, Unit" placeholder="Apt 0000" width="50%" />
+          <Input onChange={this.handleChange} name="state" label="State" placeholder="TX" width="25%" />
+          <Input onChange={this.handleChange} name="zip" label="Zip Code" placeholder="00000" width="25%" />
         </InputRow>
         <Button type="submit" onClick={this.handleSubmit}>Submit Payment</Button>
       </form>

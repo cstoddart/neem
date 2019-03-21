@@ -17,7 +17,7 @@ export class Payment extends Component {
       <PageContainer>
         <PageHeader
           title="Complete Your Payment"
-          subtitle="Submit your payment and we’ll scedule our Leeifer pro to come out"
+          subtitle="Submit your payment and we’ll scedule our Neemer pro to come out"
         />
         <PageContent>
           <PaymentForm />

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { COLORS, BORDER_RADIUS_SMALL } from '../../../constants';
 
 const buttonStyles = `
-  background: ${COLORS.GREEN};
+  background-color: ${COLORS.GREEN};
   color: white;
   padding: 15px 25px;
   font-weight: bold;

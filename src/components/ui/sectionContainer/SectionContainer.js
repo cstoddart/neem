@@ -6,6 +6,6 @@ export const SectionContainer = styled.div`
   justify-content: flex-start;
   align-items: stretch;
   text-align: left;
-  width: 100%;
+  width: 50%;
   position: relative;
 `;

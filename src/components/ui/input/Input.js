@@ -21,15 +21,24 @@ const stripeElementStyle = {
   },
 };
 
-export const Input = ({ type = 'text', label, placeholder = '', ...rest }) => (
-  <Container>
+export const Input = ({
+    type = 'text',
+    placeholder = '',
+    label,
+    width,
+    inverted,
+    onChange,
+    ...rest,
+}) => (
+  <Container width={width}>
+    {console.log('INVERTED', inverted)}
     <Label>{label}</Label>
-    <StyledInput>
-      {type === 'text' && <input placeholder={placeholder} {...rest} />}
-      {type === 'card' && <CardNumberElement style={stripeElementStyle} />}
-      {type === 'expiry' && <CardExpiryElement style={stripeElementStyle} />}
-      {type === 'cvc' && <CardCVCElement style={stripeElementStyle} />}
-      {type === 'zip' && <PostalCodeElement style={stripeElementStyle} />}
+    <StyledInput inverted={inverted ? 1 : 0}>
+      {type === 'text' && <input placeholder={placeholder} onChange={onChange} {...rest} />}
+      {type === 'card' && <CardNumberElement style={stripeElementStyle} onChange={onChange} />}
+      {type === 'expiry' && <CardExpiryElement style={stripeElementStyle} onChange={onChange} />}
+      {type === 'cvc' && <CardCVCElement style={stripeElementStyle} onChange={onChange} />}
+      {type === 'zip' && <PostalCodeElement style={stripeElementStyle} onChange={onChange} />}
     </StyledInput>
   </Container>
 )

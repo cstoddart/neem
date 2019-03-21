@@ -24,6 +24,7 @@ export class Address extends Component {
 
   setAddress = async ({ address, lat, lng, streetNumber, street, zip }) => {
     this.setState({ address, lat, lng, zip });
+    if (zip.slice(0, 5) !== '75087') return false;
 
     const params = new URLSearchParams();
     params.append('zws-id', ZILLOW_API_KEY);
@@ -57,7 +58,6 @@ export class Address extends Component {
         ? '$24.00'
         : '$26.00'
       : 0;
-
     this.context.updateOrder({
       address,
       lat,
@@ -93,7 +93,7 @@ export class Address extends Component {
               <PlacesSearch
                 handleChange={this.setAddress}
                 defaultValue={this.state.address}
-                buttonTo="/date-time"
+                buttonOnClick={this.handleClick}
               />
               <Map address={{ lat, lng }} />
               <StyledButton onClick={this.handleClick} showArrow>Date + Time</StyledButton>

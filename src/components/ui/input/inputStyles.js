@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  width: 100%;
+  width: ${({width}) => width || '100%'};
 `;
 
 export const Label = styled.h3`
@@ -19,4 +19,9 @@ export const StyledInput = styled.div`
   background-color: ${COLORS.GREY_LIGHT};
   border-radius: ${BORDER_RADIUS};
   padding: 15px;
+  
+  ${({ inverted }) => inverted && `
+    background-color: transparent;
+    border: 3px solid ${COLORS.BORDER};
+  `}
 `;

@@ -73,7 +73,7 @@ export class PlacesSearch extends Component {
           setSearchBoxRef={this.setSearchBoxRef}
           defaultValue={this.props.defaultValue}
         />
-        <SearchButton to={this.props.buttonTo}>
+        <SearchButton onClick={this.props.buttonOnClick}>
           <ArrowIcon width={20} height={20} />
         </SearchButton>
       </StyledSearchBox>

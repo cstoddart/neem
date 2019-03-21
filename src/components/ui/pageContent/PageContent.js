@@ -9,6 +9,10 @@ export const PageContent = styled.div`
   margin-bottom: ${SPACING.MEDIUM};
 
   & > *:not(:last-of-type) {
-    margin-right: 50px;
+    margin-right: 25px;
+  }
+
+  & > *:not(:first-of-type) {
+    margin-left: 25px;
   }
 `;

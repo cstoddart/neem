@@ -14,6 +14,7 @@ export const initialState = {
     subtotal: 0,
     taxes: 0,
     total: 0,
+    paid: false,
   },
   loggedIn: false,
 };

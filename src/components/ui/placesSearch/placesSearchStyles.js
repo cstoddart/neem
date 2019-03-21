@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
+import {
+  Button,
+} from '../'
 import {
   BORDER,
   BORDER_RADIUS,
@@ -16,26 +18,24 @@ export const StyledSearchBox = styled.div`
   position: relative;
 `;
 
-export const SearchButton = styled(Link)`
+export const SearchButton = styled(Button)`
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
   height: 100%;
   width: 75px;
-  background-color: ${COLORS.GREEN};
-  border: 0;
-  display: flex;
-  align-items: center;
+  border: 2px solid ${COLORS.GREEN};
   justify-content: center;
   border-top-right-radius: ${BORDER_RADIUS};
   border-bottom-right-radius: ${BORDER_RADIUS};
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   outline: 0;
-  color: white;
+  padding: 0;
 
   &:hover {
     background-color: white;
-    border: 2px solid ${COLORS.GREEN};
     color: ${COLORS.GREEN};
   }
 `;

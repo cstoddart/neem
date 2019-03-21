@@ -7,6 +7,6 @@ export const InputRow = styled.div`
   margin-bottom: ${SPACING.SMALL};
 
   & > *:not(:last-of-type) {
-    margin-right: ${SPACING.SMALL};
+    padding-right: ${SPACING.SMALL};
   }
 `;
