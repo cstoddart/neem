@@ -12,10 +12,11 @@ export const Container = styled.div`
 
 export const Label = styled.h3`
   margin-bottom: 10px;
+  text-align: left;
 `;
 
 export const StyledInput = styled.div`
   background-color: ${COLORS.GREY_LIGHT};
   border-radius: ${BORDER_RADIUS};
-  padding: 25px;
+  padding: 15px;
 `;

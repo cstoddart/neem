@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 
 import { AppContext } from '../../AppContext';
-import { login, getLoginResult } from '../../services/auth0'
+import { login } from '../../services/firebase';
 import {
   PageContainer,
+  PageHeader,
   Input,
   Button,
 } from '../ui';
+import {
+  LoginForm,
+  LoginButton,
+} from './loginStyles';
 
 export class Login extends Component {
   static contextType = AppContext;
@@ -18,28 +23,34 @@ export class Login extends Component {
   
   handleSubmit = () => {
     const { email, password } = this.state;
-    login({ email, password });
+    const redirect = function() { this.props.history.push('/address') };
+    login({ email, password, context: this.context, redirect });
   }
   
   handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
   
   render() {
-    getLoginResult();
     return(
       <PageContainer>
-        <Input
-          name="email"
-          value={this.state.email}
-          onChange={this.handleChange}
-          label="Email Address"
+        <PageHeader
+          title="Log In"
+          subtitle="If you're an existing member you can sign in below."
         />
-        <Input
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange}
-          label="Password"
-        />
-        <Button onClick={this.handleSubmit}>Login</Button>
+        <LoginForm>
+          <Input
+            name="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            label="Email Address"
+          />
+          <Input
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            label="Password"
+          />
+          <LoginButton onClick={this.handleSubmit}>Login</LoginButton>
+        </LoginForm>
       </PageContainer>
     );
   }

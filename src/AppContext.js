@@ -17,24 +17,3 @@ export const initialState = {
   },
   loggedIn: false,
 };
-
-const updateOrder = (updateContext) => ({ currentOrder, newOrder }) => {
-  return updateContext()({
-    order: {
-      ...currentOrder,
-      ...newOrder,
-    },
-  })
-};
-
-const login = (updateContext) => () => updateContext()({ loggedIn: true });
-
-const logout = (updateContext) => () => updateContext({ loggedIn: false });
-
-export const actions = (updateContext) => {
-  return {
-    updateOrder: updateOrder(updateContext),
-    login: login(updateContext),
-    logout: logout(updateContext),
-  };
-};

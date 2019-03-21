@@ -26,9 +26,9 @@ export const TIME_OPTIONS = {
   ALL_DAY: '7am - 6pm',
 };
 export const FREQUENCY_OPTIONS = {
-  EVERY_WEEK: 'Repeat Every Week',
-  EVERY_TWO_WEEKS: 'Repeat Every Two Weeks',
-  EVERY_THREE_WEEKS: 'Repeat Every Three Weeks',
-  EVERY_MONTH: 'Repeat Every Month',
+  EVERY_WEEK: 'Platinum - Weekly',
+  EVERY_TWO_WEEKS: 'Gold - Bi-Weekly',
+  EVERY_THREE_WEEKS: 'Green - Every Three Weeks',
+  EVERY_MONTH: 'Bronze - Monthly',
   NO_REPEAT: 'No, Maybe Next Time',
 };

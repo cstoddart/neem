@@ -98,35 +98,35 @@ const FrequencyOptions = ({ selectedFrequency, selectFrequency }) => (
         isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_WEEK}
       >
         <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_WEEK} />
-        Repeat Every Week
+        {FREQUENCY_OPTIONS.EVERY_WEEK}
       </FrequencyOption>
       <FrequencyOption
         onClick={() => selectFrequency(FREQUENCY_OPTIONS.EVERY_TWO_WEEKS)}
         isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_TWO_WEEKS}
       >
         <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_TWO_WEEKS} />
-        Repeat Every Two Weeks
+        {FREQUENCY_OPTIONS.EVERY_TWO_WEEKS}
       </FrequencyOption>
       <FrequencyOption
         onClick={() => selectFrequency(FREQUENCY_OPTIONS.EVERY_THREE_WEEKS)}
         isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_THREE_WEEKS}
       >
         <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_THREE_WEEKS} />
-        Repeat Every Three Weeks
+        {FREQUENCY_OPTIONS.EVERY_THREE_WEEKS}
       </FrequencyOption>
       <FrequencyOption
         onClick={() => selectFrequency(FREQUENCY_OPTIONS.EVERY_MONTH)}
         isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_MONTH}
       >
         <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.EVERY_MONTH} />
-        Repeat Every Month
+        {FREQUENCY_OPTIONS.EVERY_MONTH}
       </FrequencyOption>
       <FrequencyOption
         onClick={() => selectFrequency(FREQUENCY_OPTIONS.NO_REPEAT)}
         isSelected={selectedFrequency === FREQUENCY_OPTIONS.NO_REPEAT}
       >
         <FrequencyCheckBox isSelected={selectedFrequency === FREQUENCY_OPTIONS.NO_REPEAT} />
-        No, Maybe Next Time
+        {FREQUENCY_OPTIONS.NO_REPEAT}
       </FrequencyOption>
     </FrequencyOptionsContent>
   </StyledFrequencyOptions>

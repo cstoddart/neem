@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
 import { AppContext } from '../../AppContext';
@@ -18,10 +18,12 @@ export class Address extends Component {
     address: this.context.order.address,
     lat: this.context.order.lat,
     lng: this.context.order.lng,
+    zip: '',
+    error: false,
   };
 
   setAddress = async ({ address, lat, lng, streetNumber, street, zip }) => {
-    this.setState({ address, lat, lng });
+    this.setState({ address, lat, lng, zip });
 
     const params = new URLSearchParams();
     params.append('zws-id', ZILLOW_API_KEY);
@@ -66,22 +68,37 @@ export class Address extends Component {
       total,
     });
   };
+  
+  handleClick = () => {
+    if (this.state.zip.slice(0, 5) === '75087') {
+      return this.props.history.push('/date-time');
+    }
+    return this.setState({ error: true });
+  };
 
   render() {
     const { lat, lng } = this.state;
     return(
       <PageContainer>
-        <PageHeader
-          title="Enter Your Home Address"
-          subtitle="We use this to locate your home ensuring you are within range."
-        />
-        <PlacesSearch
-          handleChange={this.setAddress}
-          defaultValue={this.state.address}
-          buttonTo="/date-time"
-        />
-        <Map address={{ lat, lng }} />
-        <StyledButton to="/date-time" showArrow>Date + Time</StyledButton>
+        {this.state.error
+          ? <PageHeader
+              title="Ohhh Noo!!! 🎉🌳"
+              subtitle="Unfortunately we are not serving your area."
+            />
+          : <Fragment>
+            <PageHeader
+                title="Enter Your Home Address"
+                subtitle="We use this to locate your home ensuring you are within range."
+              />
+              <PlacesSearch
+                handleChange={this.setAddress}
+                defaultValue={this.state.address}
+                buttonTo="/date-time"
+              />
+              <Map address={{ lat, lng }} />
+              <StyledButton onClick={this.handleClick} showArrow>Date + Time</StyledButton>
+            </Fragment>
+        }
       </PageContainer>
     );
   }

@@ -1,3 +1,4 @@
+/* global localStorage */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
@@ -7,17 +8,18 @@ import '@babel/polyfill';
 import { STRIPE_PUBLIC_KEY } from './keys';
 import { AppContext, initialState, actions } from './AppContext';
 import { Navigation } from './components/ui';
+import { Login } from './components/login/Login';
 import { Address } from './components/address/Address';
 import { Payment } from './components/payment/Payment';
 import { DateTime } from './components/dateTime/DateTime';
-import { Login } from './components/login/Login';
+import { Summary } from './components/summary/Summary';
 import { GlobalStyles } from './appStyles';
 
 class PrivateRoute extends Component {
   static contextType = AppContext;
   
   render() {
-    return this.context.loggedIn
+    return this.context.loggedIn || localStorage.getItem('loggedIn')
       ? <Route {...this.props} />
       : <Redirect 
         to={{
@@ -49,11 +51,12 @@ class App extends Component {
             <GlobalStyles />
             <Navigation />
             <Switch>
+              <Route path="/login" component={Login} />
               <PrivateRoute exact path="/" render={() => <Redirect to="/address" />} />
               <PrivateRoute path="/address" component={Address} />
               <PrivateRoute path="/date-time" component={DateTime} />
               <PrivateRoute path="/payment" component={Payment} />
-              <Route path="/login" component={Login} />
+              <PrivateRoute path="/order-complete" component={Summary} />
             </Switch>
           </AppContext.Provider>
         </StripeProvider>

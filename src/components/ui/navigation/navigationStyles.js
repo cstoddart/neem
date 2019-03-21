@@ -26,6 +26,7 @@ export const Logo = styled(Link)`
   font-size: 35px;
   z-index: 1;
   color: ${COLORS.TEXT};
+  font-weight: bold;
 `;
 
 export const StyledSteps = styled.div`
