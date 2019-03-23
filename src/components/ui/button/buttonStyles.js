@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { COLORS, BORDER_RADIUS_SMALL } from '../../../constants';
 
-const buttonStyles = `
+const buttonStyles = css`
   background-color: ${COLORS.GREEN};
   color: white;
   padding: 15px 25px;
@@ -13,6 +13,12 @@ const buttonStyles = `
   align-items: center;
   border: 3px solid ${COLORS.GREEN};
   font-size: 16px;
+
+  ${({ fullWidth }) => fullWidth && `
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  `}
 
   &:hover {
     background-color: transparent;

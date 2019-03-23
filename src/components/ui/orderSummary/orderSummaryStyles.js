@@ -66,4 +66,13 @@ export const OrderTotal = styled(SummaryBox)`
   ${SummaryPointDetails} {
     color: ${COLORS.TEXT};
   }
+
+  ${({ paid }) => paid && `
+    background-color: ${COLORS.GREEN};
+    color: white;
+
+    ${SummaryPointDetails} {
+      color: white;
+    }
+  `}
 `;

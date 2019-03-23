@@ -10,6 +10,7 @@ import {
 } from '../ui';
 import {
   LoginForm,
+  LoginInput,
   LoginButton,
 } from './loginStyles';
 
@@ -23,7 +24,7 @@ export class Login extends Component {
   
   handleSubmit = () => {
     const { email, password } = this.state;
-    const redirect = function() { this.props.history.push('/address') };
+    const redirect = () => this.props.history.push('/address');
     login({ email, password, context: this.context, redirect });
   }
   
@@ -37,18 +38,23 @@ export class Login extends Component {
           subtitle="If you're an existing member you can sign in below."
         />
         <LoginForm>
-          <Input
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            label="Email Address"
-          />
-          <Input
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            label="Password"
-          />
+          <LoginInput>
+            <Input
+              name="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              label="Email Address"
+            />
+          </LoginInput>
+          <LoginInput>
+            <Input
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              label="Password"
+            />
+          </LoginInput>
           <LoginButton onClick={this.handleSubmit}>Login</LoginButton>
         </LoginForm>
       </PageContainer>

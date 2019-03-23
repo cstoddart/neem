@@ -73,11 +73,19 @@ export const NumberCircle = styled.span`
   }
 `;
 
-export const XButton = styled(Link)`
-  font-size: 24px;
+export const XButton = styled.div`
+  font-size: 14px;
   font-weight: bold;
-  color: red;
+  color: #e86c60;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  img {
+    margin-right: 5px;
+  }
 `;
 
 export const Dash = styled.div`

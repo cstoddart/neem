@@ -20,7 +20,7 @@ export class Payment extends Component {
           subtitle="Submit your payment and we’ll scedule our Neemer pro to come out"
         />
         <PageContent>
-          <PaymentForm />
+          <PaymentForm redirect={() => this.props.history.push('/order-complete')} />
           <OrderSummary />
         </PageContent>
       </PageContainer>

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 
+import { AppContext } from '../../../AppContext';
+import { logout } from '../../../services/firebase';
 import {
   StyledNavigation,
   NavigationContent,
@@ -40,12 +42,18 @@ const Steps = () => (
   </StyledSteps>
 );
 
-export const Navigation = () => (
-  <StyledNavigation>
-    <NavigationContent>
-      <Logo to="/">Neem</Logo>
-      <Steps />
-      <XButton to="/"><img src={XImg} /></XButton>
-    </NavigationContent>
-  </StyledNavigation>
-);
+export class Navigation extends Component {
+  static contextType = AppContext;
+
+  render() {
+    return (
+      <StyledNavigation>
+        <NavigationContent>
+          <Logo to="/">Neem</Logo>
+          <Steps />
+          <XButton onClick={() => logout({ context: this.context })}><img src={XImg} />Sign Out</XButton>
+        </NavigationContent>
+      </StyledNavigation>
+    );
+  }
+}

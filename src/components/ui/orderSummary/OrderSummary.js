@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import format from 'date-fns/format';
 
 import { AppContext } from '../../../AppContext';
-import { numberWithCommas } from '../../../utils';
+import { formatCurrency, formatNumber } from '../../../utils';
 import {
   SectionContainer,
   SectionHeader,
@@ -32,7 +32,7 @@ export class OrderSummary extends Component {
           </SummaryPoint>
           <SummaryPoint>
             <SummaryPointTitle>Your Lot Size -</SummaryPointTitle>
-            <SummaryPointDetails>{numberWithCommas(this.context.order.lotSize) || '--'}</SummaryPointDetails>
+            <SummaryPointDetails>{formatNumber(this.context.order.lotSize) || '--'}</SummaryPointDetails>
           </SummaryPoint>
           <SummaryPoint>
             <SummaryPointTitle>Service Date & Time -</SummaryPointTitle>
@@ -50,17 +50,20 @@ export class OrderSummary extends Component {
         <CostSummary>
           <SummaryPoint>
             <SummaryPointTitle>Subtotal -</SummaryPointTitle>
-            <SummaryPointDetails>{numberWithCommas(this.context.order.subtotal) || '--'}</SummaryPointDetails>
+            <SummaryPointDetails>{formatCurrency(this.context.order.subtotal) || '--'}</SummaryPointDetails>
           </SummaryPoint>
           <SummaryPoint>
             <SummaryPointTitle>State Tax & Fees -</SummaryPointTitle>
-            <SummaryPointDetails>{numberWithCommas(this.context.order.taxes) || '--'}</SummaryPointDetails>
+            <SummaryPointDetails>{formatCurrency(this.context.order.taxes) || '--'}</SummaryPointDetails>
           </SummaryPoint>
         </CostSummary>
-        <OrderTotal>
+        <OrderTotal paid={this.context.order.paid ? 1 : 0}>
           <SummaryPoint>
-            <SummaryPointTitle>Final Payment -</SummaryPointTitle>
-            <SummaryPointDetails>{numberWithCommas(this.context.order.total) || '--'}</SummaryPointDetails>
+            {this.context.order.paid
+              ? <SummaryPointTitle>Final Amount Paid -</SummaryPointTitle>
+              : <SummaryPointTitle>Final Payment -</SummaryPointTitle>
+            }
+            <SummaryPointDetails>{formatCurrency(this.context.order.total) || '--'}</SummaryPointDetails>
           </SummaryPoint>
         </OrderTotal>
       </SectionContainer>

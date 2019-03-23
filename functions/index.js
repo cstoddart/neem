@@ -10,16 +10,18 @@ app.use(cors({ origin: true }));
 app.post('/', (request, response) => {
   const body = request.body;
   const tokenId = body.token.id;
-  const amount = body.amount;
-  const currency = body.currency;
-  const description = body.chargeDescription;
+  const amount = body.charge.amount;
+  const currency = body.charge.currency;
+  const description = body.charge.description;
 
   stripe.charges.create({
     amount,
     currency,
     description,
     source: tokenId,
-  });
+  })
+  .then((charge) => response.status(200).send(charge))
+  .catch(response.status(500).send);
 });
 
 const firebasePathPatch = (app) => (req, res) => {

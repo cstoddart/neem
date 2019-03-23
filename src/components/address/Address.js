@@ -45,18 +45,18 @@ export class Address extends Component {
       : 'Unable To Determine';
     const subtotal = netLotSize > 0
       ? netLotSize < 10000
-        ? '$22.50'
-        : '$23.50'
+        ? 2250
+        : 2350
       : 0;
     const taxes = netLotSize > 0
       ? netLotSize < 10000
-        ? '$1.50'
-        : '$2.50'
+        ? 150
+        : 250
       : 0;
     const total = netLotSize > 0
       ? netLotSize < 10000
-        ? '$24.00'
-        : '$26.00'
+        ? 2400
+        : 2600
       : 0;
     this.context.updateOrder({
       address,

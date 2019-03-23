@@ -16,12 +16,26 @@ const firebaseApp = firebase.initializeApp(config);
 export function login({ email, password, context, redirect }) {
   firebaseApp.auth().onAuthStateChanged(function(user){
     if (user) {
+      console.log('USER', user);
       context.login();
-      localStorage.setItem('loggedIn', true);
-      if (redirect) redirect();
+      localStorage.setItem('loggedIn', user.uid);
+      redirect();
     } else {
       context.logout();
     }
   });
-  firebaseApp.auth().signInWithEmailAndPassword(email, password);
+  return firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    .catch(console.error);
 }
+
+export function logout({ context }) {
+  context.logout();
+  localStorage.removeItem('loggedIn');
+  return firebaseApp.auth().signOut();
+}
+
+export function createUser({email, password}) {
+  firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+    .catch(console.error);
+}
+

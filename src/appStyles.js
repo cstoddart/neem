@@ -33,6 +33,10 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
   }
 
+  p {
+    margin: 0;
+  }
+
   a {
     text-decoration: none;
   }
