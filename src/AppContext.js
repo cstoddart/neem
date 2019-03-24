@@ -16,5 +16,12 @@ export const initialState = {
     total: 0,
     paid: false,
   },
-  loggedIn: false,
+  user: {
+    id: '',
+    loggedIn: false,
+    currentSubscription: {
+      frequency: '',
+      address: '',
+    },
+  },
 };

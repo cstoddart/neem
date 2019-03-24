@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { AppContext } from '../../AppContext';
+import { getUser } from '../../services/firebase';
 import {
   PageContainer,
   PageHeader,
@@ -8,51 +10,35 @@ import {
   SectionContainer,
   SectionHeader,
 } from '../ui';
-import {
-  NextSteps,
-  Step,
-  Number,
-  Content,
-  Title,
-  Text,
-} from './summaryStyles';
+import { ManageSubscriptions } from './ManageSubscriptions';
+import { PaymentMethods } from './PaymentMethods';
+import { OrderHistory } from './OrderHistory';
+import { CurrentSubscription } from './CurrentSubscription';
 
-export class Summary extends Component {
+export class Account extends Component {
+  static contextType = AppContext;
+
+  componentDidMount() {
+    getUser(this.context);
+  }
+
   render() {
+    console.log('CONTEXT', this.context);
     return (
       <PageContainer>
         <PageHeader
-          title="Hip Hip Hooray! 🎉🌳"
-          subtitle="Thanks for trusting Neem with your lawn care, look below for next steps."
+          title="Account Details"
+          subtitle="Manage subscriptions, payment methods, & order history."
         />
         <PageContent>
           <SectionContainer>
-            <SectionHeader>Next Steps...</SectionHeader>
-            <NextSteps>
-              <Step>
-                <Number>1</Number>
-                <Content>
-                  <Title>On the day of your lawn care service, you’ll be sent a text and email reminder.</Title>
-                  <Text>Sometime around 6-8am you’ll be sent an text and email reminder informing you about your upcoming service. You’ll also find details about your Neem Professional.</Text>
-                </Content>
-              </Step>
-              <Step>
-                <Number>2</Number>
-                <Content>
-                  <Title>A Neem Professional will then arrive during your selected time frame.</Title>
-                  <Text>A leeifer professional will arrive in a green uniformed polo, assess your front and back yard. Then begin the lawn care services.</Text>
-                </Content>
-              </Step>
-              <Step>
-                <Number>3</Number>
-                <Content>
-                  <Title>Upon service completion. The Leeifer pro will leave a door hanger checklist for you.</Title>
-                  <Text>Once the service has been completed, the Leeifer professional will leave a door hanger checklist for you to fill out. Fill it out and leave it outside for our Leeifer Managers who drive around to check your lawn.</Text>
-                </Content>
-              </Step>
-            </NextSteps>
+            {this.context.user.currentSubscription && <ManageSubscriptions />}
+            <PaymentMethods />
+            <OrderHistory />
           </SectionContainer>
-          <OrderSummary />
+          <SectionContainer>
+            <CurrentSubscription />
+          </SectionContainer>
         </PageContent>
       </PageContainer>
     );

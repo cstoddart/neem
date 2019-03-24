@@ -6,7 +6,7 @@ import {
 
 import { AppContext } from '../../../AppContext';
 import { processPayment } from '../../../services/stripe';
-import { createUser } from '../../../services/firebase';
+import { createUser, updateUser } from '../../../services/firebase';
 import {
   SectionContainer,
   Input,
@@ -33,10 +33,22 @@ class PaymentInputs extends Component {
       amount: this.context.order.total,
       name: this.state.name,
     });
-    if (this.state.email && this.state.password) {
-      await createUser({ email, password});
+
+    if (this.context.loggedIn) {
+      await updateUser({
+        id: this.context.user.id,
+        name: this.state.name,
+        context: this.context,
+      });
+    } else if (this.state.email && this.state.password) {
+      await createUser({
+        email: this.state.email,
+        password: this.state.password,
+        name: this.state.name,
+        context: this.context,
+      });
     }
-    this.context.updateOrder({ paid: true })
+    this.context.updateOrder({ paid: true });
     this.props.redirect();
   };
   

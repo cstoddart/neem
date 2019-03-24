@@ -13,6 +13,7 @@ const buttonStyles = css`
   align-items: center;
   border: 3px solid ${COLORS.GREEN};
   font-size: 16px;
+  cursor: pointer;
 
   ${({ fullWidth }) => fullWidth && `
     display: flex;

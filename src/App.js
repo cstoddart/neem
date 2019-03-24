@@ -13,13 +13,15 @@ import { Address } from './components/address/Address';
 import { Payment } from './components/payment/Payment';
 import { DateTime } from './components/dateTime/DateTime';
 import { Summary } from './components/summary/Summary';
+import { Account } from './components/account/Account';
 import { GlobalStyles } from './appStyles';
+import { getUser } from './services/firebase';
 
 class PrivateRoute extends Component {
   static contextType = AppContext;
   
   render() {
-    return this.context.loggedIn || localStorage.getItem('loggedIn')
+    return this.context.user.loggedIn || localStorage.getItem('loggedIn')
       ? <Route {...this.props} />
       : <Redirect 
         to={{
@@ -39,9 +41,24 @@ class App extends Component {
         ...order,
       },
     })),
-    login: () => this.setState({ loggedIn: true }),
-    logout: () => this.setState({ loggedIn: false }),
+    updateUser: (user) => this.setState((state) => ({
+      ...state.user,
+      user,
+    })),
   };
+
+  async componentDidMount() {
+    const userId = localStorage.getItem('loggedIn');
+    if (userId) {
+      this.setState((state) => ({
+        user: {
+          ...state.user,
+          loggedIn: true,
+          id: userId,
+        },
+      }));
+    }
+  }
 
   render() {
     return (
@@ -52,11 +69,12 @@ class App extends Component {
             <Navigation />
             <Switch>
               <Route path="/login" component={Login} />
-              <PrivateRoute exact path="/" render={() => <Redirect to="/address" />} />
-              <PrivateRoute path="/address" component={Address} />
-              <PrivateRoute path="/date-time" component={DateTime} />
-              <PrivateRoute path="/payment" component={Payment} />
-              <PrivateRoute path="/order-complete" component={Summary} />
+              <Route exact path="/" render={() => <Redirect to="/address" />} />
+              <Route path="/address" component={Address} />
+              <Route path="/date-time" component={DateTime} />
+              <Route path="/payment" component={Payment} />
+              <Route path="/order-complete" component={Summary} />
+              <PrivateRoute path="/account" component={Account} />
             </Switch>
           </AppContext.Provider>
         </StripeProvider>

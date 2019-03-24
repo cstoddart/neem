@@ -40,14 +40,14 @@ export class Summary extends Component {
                 <Number>2</Number>
                 <Content>
                   <Title>A Neem Professional will then arrive during your selected time frame.</Title>
-                  <Text>A leeifer professional will arrive in a green uniformed polo, assess your front and back yard. Then begin the lawn care services.</Text>
+                  <Text>A Neemer professional will arrive in a green uniformed polo, assess your front and back yard. Then begin the lawn care services.</Text>
                 </Content>
               </Step>
               <Step>
                 <Number>3</Number>
                 <Content>
-                  <Title>Upon service completion. The Leeifer pro will leave a door hanger checklist for you.</Title>
-                  <Text>Once the service has been completed, the Leeifer professional will leave a door hanger checklist for you to fill out. Fill it out and leave it outside for our Leeifer Managers who drive around to check your lawn.</Text>
+                  <Title>Upon service completion. The Neemer pro will leave a door hanger checklist for you.</Title>
+                  <Text>Once the service has been completed, the Neemer professional will leave a door hanger checklist for you to fill out. Fill it out and leave it outside for our Neemer Managers who drive around to check your lawn.</Text>
                 </Content>
               </Step>
             </NextSteps>
