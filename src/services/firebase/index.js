@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import 'firebase/firebase-firestore';
 import 'firebase/auth';
 
+import { initialState } from '../../AppContext';
+
 const config = {
   apiKey: "AIzaSyBRwkSnbOQaHgAf4hFgxXo0Jee1fAKKtuI",
   authDomain: "leeif-222702.firebaseapp.com",
@@ -15,47 +17,47 @@ const config = {
 const firebaseApp = firebase.initializeApp(config);
 const db = firebase.firestore();
 
-export function login({ email, password, context, redirect }) {
+export function login({ email, password, context, history }) {
   firebaseApp.auth().onAuthStateChanged(function (user) {
     if (user) {
-      console.log('USER', user);
       context.updateUser({
         loggedIn: true,
         id: user.uid,
       });
       localStorage.setItem('loggedIn', user.uid);
-      redirect();
-    } else {
-      context.logout();
+      history.push('/address');
     }
   });
   return firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .catch(console.error);
 }
 
-export function logout({ context }) {
-  context.logout();
+export function logout({ context, history }) {
+  context.updateUser(initialState.user);
   localStorage.removeItem('loggedIn');
-  return firebaseApp.auth().signOut();
+  firebaseApp.auth().signOut();
+  history.push('/login');
 }
 
-export async function createUser({ email, password, name, context }) {
-  const user = await firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-    .catch(console.error);
-  db.collection('users').doc(user.uid).set({
-    name,
-    currentSubscription: {
-      frequency: context.order.frequency,
-      address: context.order.address,
-    },
-  })
-    .then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
+export function createUser({ email, password, name, context, stripeCustomerId }) {
+  firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+    .then(({ user }) => {
+      db.collection('users').doc(user.uid).set({
+        name,
+        currentSubscription: {
+          frequency: context.order.frequency,
+          address: context.order.address,
+        },
+        stripeCustomerId,
+      })
+        .then(function (docRef) {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function (error) {
+          console.error("Error adding document: ", error);
+        });
     })
-    .catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
-  return firebaseApp;
+    .catch(console.error);
 }
 
 export async function updateUser({ id, name, context }) {
@@ -76,7 +78,6 @@ export async function getUser(context) {
       context.updateUser(user);
       return user;
     } else {
-      // doc.data() will be undefined in this case
       console.log("No such document!");
     }
   }).catch(function (error) {

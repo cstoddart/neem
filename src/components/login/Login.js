@@ -20,15 +20,19 @@ export class Login extends Component {
   state = {
     email: '',
     password: '',
-  }
+  };
   
   handleSubmit = () => {
     const { email, password } = this.state;
-    const redirect = () => this.props.history.push('/address');
-    login({ email, password, context: this.context, redirect });
-  }
+    login({
+      email,
+      password,
+      context: this.context,
+      history: this.props.history,
+    });
+  };
   
-  handleChange = (event) => this.setState({ [event.target.name]: event.target.value })
+  handleChange = (event) => this.setState({ [event.target.name]: event.target.value });
   
   render() {
     return(

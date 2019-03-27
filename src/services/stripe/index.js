@@ -2,14 +2,21 @@ import axios from 'axios';
 
 import { FIREBASE_FUNCTION_URL } from '../../keys';
 
-export function processPayment({ stripe, customerName, amount }) {
-  stripe.createToken({ name: customerName }).then(function({ token }) {
+export function processPayment({ stripe, amount, name, email, stripeCustomerId, isNewUser, isExistingUser }) {
+  return stripe.createToken({ name: name }).then(function({ token }) {
     const data = {
       token,
       charge: {
         amount,
         currency: 'usd',
         description: 'Neem service charge',
+      },
+      customer: {
+        id: stripeCustomerId,
+        name,
+        email,
+        isNewUser,
+        isExistingUser,
       },
     };
 

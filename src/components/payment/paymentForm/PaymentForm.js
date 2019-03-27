@@ -6,13 +6,13 @@ import {
 
 import { AppContext } from '../../../AppContext';
 import { processPayment } from '../../../services/stripe';
-import { createUser, updateUser } from '../../../services/firebase';
+import { createUser, updateUser, getUser } from '../../../services/firebase';
 import {
   SectionContainer,
   Input,
   InputRow,
   Button,
-} from '../';
+} from '../../ui';
 
 class PaymentInputs extends Component {
   static contextType = AppContext;
@@ -26,28 +26,41 @@ class PaymentInputs extends Component {
     state: '',
   }
 
+  componentDidMount() {
+    if (this.context.user.loggedIn) {
+      getUser(this.context.user.id);
+    }
+  }
+
   handleSubmit = async (event) => {
     event.preventDefault();
-    await processPayment({
+    const isNewUser = this.state.email && this.state.password;
+    const isExistingUser = this.context.user.loggedIn;
+    const paymentResult = await processPayment({
       stripe: this.props.stripe,
       amount: this.context.order.total,
       name: this.state.name,
+      email: this.state.email,
+      stripeCustomerId: this.context.user.stripeCustomerId,
+      isNewUser,
+      isExistingUser,
     });
-
-    if (this.context.loggedIn) {
-      await updateUser({
-        id: this.context.user.id,
-        name: this.state.name,
-        context: this.context,
-      });
-    } else if (this.state.email && this.state.password) {
+    console.log('PAYMENT RESULT', paymentResult);
+    if (isNewUser) {
       await createUser({
         email: this.state.email,
         password: this.state.password,
         name: this.state.name,
         context: this.context,
+        stripeCustomerId: paymentResult.data.customer.id,
       });
-    }
+    } else if (isExistingUser) {
+      await updateUser({
+        id: this.context.user.id,
+        name: this.state.name,
+        context: this.context,
+      });
+    } 
     this.context.updateOrder({ paid: true });
     this.props.redirect();
   };
@@ -62,10 +75,12 @@ class PaymentInputs extends Component {
           <Input width="25%" value={this.state.expiration} name="expiration" type="expiration" label="Exp" placeholder="MM/YY" />
           <Input width="25%" value={this.state.securityCode} name="securityCode" type="securityCode" label="CVV" placeholder="***" />
         </InputRow>
-        <InputRow>
-          <Input width="50%" value={this.state.email} onChange={this.handleChange} name="email" label="Email Address" placeholder="johnathandoe@gmail.com" inverted />
-          <Input width="50%" value={this.state.password} onChange={this.handleChange} name="password" type="password" label="Create Password" placeholder="**********" inverted />
-        </InputRow>
+        {!this.context.user.loggedIn && (
+          <InputRow>
+            <Input width="50%" value={this.state.email} onChange={this.handleChange} name="email" label="Email Address" placeholder="johnathandoe@gmail.com" inverted />
+            <Input width="50%" value={this.state.password} onChange={this.handleChange} name="password" type="password" label="Create Password" placeholder="**********" inverted />
+          </InputRow>
+        )}
         <InputRow>
           <Input width="50%" value={this.state.name} onChange={this.handleChange} name="name" label="Cardholder Name" placeholder="John Doe" />
           <Input width="50%" value={this.state.address} onChange={this.handleChange} name="address" label="Full Street Address" placeholder="123 Neem Street" />

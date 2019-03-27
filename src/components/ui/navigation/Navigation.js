@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 import { AppContext } from '../../../AppContext';
 import { logout } from '../../../services/firebase';
@@ -10,7 +11,8 @@ import {
   StyledNavLink,
   NumberCircle,
   Dash,
-  XButton,
+  SignOut,
+  SignIn,
 } from './navigationStyles';
 import XImg from '../../../assets/images/x.svg';
 
@@ -42,7 +44,7 @@ const Steps = () => (
   </StyledSteps>
 );
 
-export class Navigation extends Component {
+class NavigationClass extends Component {
   static contextType = AppContext;
 
   render() {
@@ -51,9 +53,17 @@ export class Navigation extends Component {
         <NavigationContent>
           <Logo to="/">Neem</Logo>
           <Steps />
-          <XButton onClick={() => logout({ context: this.context })}><img src={XImg} />Sign Out</XButton>
+          {this.context.user.loggedIn
+            ? <SignOut onClick={() => logout({
+              context: this.context,
+              history: this.props.history
+            })}><img src={XImg} />Sign Out</SignOut>
+            : <SignIn to="/login">Sign In</SignIn>
+          }
         </NavigationContent>
       </StyledNavigation>
     );
   }
 }
+
+export const Navigation = withRouter(NavigationClass);

@@ -5,9 +5,9 @@ import {
   PageContainer,
   PageHeader,
   PageContent,
-  DateTimePicker,
   OrderSummary,
 } from '../ui';
+import { DateTimePicker } from './dateTimePicker/DateTimePicker'
 import {
   StyledButton,
 } from './dateTimeStyles';

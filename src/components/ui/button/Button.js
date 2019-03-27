@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 import { ArrowIcon } from '../';
-import { LinkButton, OnClickButton } from './buttonStyles';
+import { StyledButton } from './buttonStyles';
 
 export const Button = ({ onClick, to, children, showArrow, fullWidth, ...props }) => (
   <Fragment>

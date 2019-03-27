@@ -11,7 +11,7 @@ import {
   SectionContainer, 
   SectionHeader,
   ArrowIcon,
-} from '../';
+} from '../../ui';
 import {
   Days,
   StyledDay,

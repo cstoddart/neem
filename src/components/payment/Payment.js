@@ -4,9 +4,9 @@ import {
   PageContainer,
   PageHeader,
   PageContent,
-  PaymentForm,
   OrderSummary,
 } from '../ui';
+import { PaymentForm } from './paymentForm/PaymentForm';
 import {
   PaymentContent,
 } from './paymentStyles';

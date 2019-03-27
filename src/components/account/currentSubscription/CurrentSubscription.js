@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import {
   SectionHeader,
-} from '../ui';
+} from '../../ui';
 
 export class CurrentSubscription extends Component {
   render() {

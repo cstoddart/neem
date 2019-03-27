@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
-import { AppContext } from '../../AppContext';
+import { AppContext } from '../../../AppContext';
 import {
   SectionHeader,
-} from '../ui';
+} from '../../ui';
 
 export class ManageSubscriptions extends Component {
   static contextType = AppContext;

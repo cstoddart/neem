@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react';
 
 import {
   SectionHeader,
-} from '../ui';
+} from '../../ui';
 
-export class OrderHistory extends Component {
+export class PaymentMethods extends Component {
   render() {
     return (
       <Fragment>
-        <SectionHeader>Order History</SectionHeader>
+        <SectionHeader>Payment Methods</SectionHeader>
       </Fragment>
     )
   }

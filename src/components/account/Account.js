@@ -10,10 +10,10 @@ import {
   SectionContainer,
   SectionHeader,
 } from '../ui';
-import { ManageSubscriptions } from './ManageSubscriptions';
-import { PaymentMethods } from './PaymentMethods';
-import { OrderHistory } from './OrderHistory';
-import { CurrentSubscription } from './CurrentSubscription';
+import { ManageSubscriptions } from './manageSubscriptions/ManageSubscriptions';
+import { PaymentMethods } from './paymentMethods/PaymentMethods';
+import { OrderHistory } from './orderHistory/OrderHistory';
+import { CurrentSubscription } from './currentSubscription/CurrentSubscription';
 
 export class Account extends Component {
   static contextType = AppContext;

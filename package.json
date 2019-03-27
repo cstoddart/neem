@@ -1,5 +1,5 @@
 {
-  "name": "leeif",
+  "name": "neem",
   "version": "1.0.0",
   "description": "",
   "main": "src/App.js",
@@ -9,16 +9,6 @@
     "serve": "firebase serve --host 0.0.0.0 --port 3000",
     "deploy": "npm run build && firebase deploy"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cstoddart/leeif.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cstoddart/leeif/issues"
-  },
-  "homepage": "https://github.com/cstoddart/leeif#readme",
   "dependencies": {
     "@babel/core": "^7.4.0",
     "@babel/plugin-proposal-class-properties": "^7.4.0",

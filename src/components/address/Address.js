@@ -4,11 +4,11 @@ import axios from 'axios';
 import { AppContext } from '../../AppContext';
 import { ZILLOW_API_KEY } from '../../keys';
 import {
-  Map,
   PageContainer,
   PageHeader,
-  PlacesSearch,
 } from '../ui';
+import { PlacesSearch } from './placesSearch/PlacesSearch';
+import { Map } from './map/Map';
 import { StyledButton } from './addressStyles';
 
 export class Address extends Component {
@@ -24,7 +24,7 @@ export class Address extends Component {
 
   setAddress = async ({ address, lat, lng, streetNumber, street, zip }) => {
     this.setState({ address, lat, lng, zip });
-    if (zip.slice(0, 5) !== '75087') return false;
+    if (zip.slice(0, 5) !== '76005') return false;
 
     const params = new URLSearchParams();
     params.append('zws-id', ZILLOW_API_KEY);
@@ -70,7 +70,7 @@ export class Address extends Component {
   };
   
   handleClick = () => {
-    if (this.state.zip.slice(0, 5) === '75087') {
+    if (this.state.zip.slice(0, 5) === '76005') {
       return this.props.history.push('/date-time');
     }
     return this.setState({ error: true });

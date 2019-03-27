@@ -73,7 +73,7 @@ export const NumberCircle = styled.span`
   }
 `;
 
-export const XButton = styled.div`
+export const SignOut = styled.div`
   font-size: 14px;
   font-weight: bold;
   color: #e86c60;
@@ -86,6 +86,17 @@ export const XButton = styled.div`
   img {
     margin-right: 5px;
   }
+`;
+
+export const SignIn = styled(Link)`
+  font-size: 14px;
+  font-weight: bold;
+  color: #e86c60;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 export const Dash = styled.div`

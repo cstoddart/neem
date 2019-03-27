@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import {
   Button,
-} from '../'
+} from '../../ui'
 import {
   BORDER,
   BORDER_RADIUS,

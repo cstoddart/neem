@@ -1,15 +1,11 @@
 export { ArrowIcon } from './arrowIcon/ArrowIcon';
 export { Button } from './button/Button';
-export { DateTimePicker } from './dateTimePicker/DateTimePicker';
 export { Input } from './input/Input';
-export { InputRow } from './inputRow/InputRow';
-export { Map } from './map/Map';
+export { InputRow } from './inputRow/InputRow'
 export { Navigation } from './navigation/Navigation';
 export { OrderSummary } from './orderSummary/OrderSummary';
 export { PageContainer } from './pageContainer/PageContainer';
 export { PageContent } from './pageContent/PageContent';
 export { PageHeader } from './pageHeader/PageHeader';
-export { PaymentForm } from './paymentForm/PaymentForm';
-export { PlacesSearch } from './placesSearch/PlacesSearch';
 export { SectionContainer } from './sectionContainer/SectionContainer';
 export { SectionHeader } from './sectionHeader/SectionHeader';

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { COLORS, BORDER_RADIUS_SMALL } from '../../../constants';
 
-const buttonStyles = css`
+export const StyledButton = styled(Link)`
   background-color: ${COLORS.GREEN};
   color: white;
   padding: 15px 25px;
@@ -25,12 +25,4 @@ const buttonStyles = css`
     background-color: transparent;
     color: ${COLORS.GREEN};
   }
-`;
-
-export const LinkButton = styled(Link)`
-  ${buttonStyles}
-`;
-
-export const OnClickButton = styled.button`
-  ${buttonStyles}
 `;

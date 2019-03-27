@@ -8,20 +8,52 @@ const app = express();
 app.use(cors({ origin: true }));
 
 app.post('/', (request, response) => {
-  const body = request.body;
-  const tokenId = body.token.id;
-  const amount = body.charge.amount;
-  const currency = body.charge.currency;
-  const description = body.charge.description;
+  const { token, charge, customer } = request.body;
+  const tokenId = token.id;
+  const amount = charge.amount;
+  const currency = charge.currency;
+  const description = charge.description;
+  const isNewUser = customer.isNewUser;
+  const customerName = customer.name;
+  const customerEmail = customer.email;
+  const customerId = customer.id;
 
-  stripe.charges.create({
+  const handleError = (error) => {
+    console.log('BODY', body);
+    response.status(500).send(error);
+  }
+
+  if (isNewUser) {
+    return stripe.customers.create({
+      source: tokenId,
+      email: customerEmail,
+    })
+      .then((customer) => stripe.charges.create({
+        amount,
+        currency,
+        customer: customer.id,
+      })
+        .then((charge) => response.status(200).send({ charge, customer }))
+        .catch(handleError)
+      )
+      .catch(handleError);
+  } else if (isExistingUser) {
+    return stripe.charges.create({
+      amount,
+      currency,
+      customer: customerId,
+    })
+      .then((charge) => response.status(200).send({ charge }))
+      .catch(handleError);
+  }
+  return stripe.charges.create({
     amount,
     currency,
     description,
     source: tokenId,
   })
-  .then((charge) => response.status(200).send(charge))
-  .catch(response.status(500).send);
+    .then((charge) => response.status(200).send({ charge }))
+    .catch(handleError);
 });
 
 const firebasePathPatch = (app) => (req, res) => {

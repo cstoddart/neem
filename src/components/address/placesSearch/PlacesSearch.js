@@ -3,7 +3,7 @@ import { withScriptjs } from 'react-google-maps';
 import { StandaloneSearchBox } from 'react-google-maps/lib/components/places/StandaloneSearchBox';
 
 import { GOOGLE_API_KEY } from '../../../keys';
-import { ArrowIcon } from '../';
+import { ArrowIcon } from '../../ui';
 import {
   StyledSearchBox,
   Input,
