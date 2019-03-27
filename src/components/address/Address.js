@@ -6,10 +6,11 @@ import { ZILLOW_API_KEY } from '../../keys';
 import {
   PageContainer,
   PageHeader,
+  Button,
 } from '../ui';
 import { PlacesSearch } from './placesSearch/PlacesSearch';
 import { Map } from './map/Map';
-import { StyledButton } from './addressStyles';
+import { AddressButton } from './addressStyles';
 
 export class Address extends Component {
   static contextType = AppContext;
@@ -24,7 +25,7 @@ export class Address extends Component {
 
   setAddress = async ({ address, lat, lng, streetNumber, street, zip }) => {
     this.setState({ address, lat, lng, zip });
-    if (zip.slice(0, 5) !== '76005') return false;
+    if (zip.slice(0, 5) !== '76005') return;
 
     const params = new URLSearchParams();
     params.append('zws-id', ZILLOW_API_KEY);
@@ -35,8 +36,8 @@ export class Address extends Component {
     const xmlDoc = parser.parseFromString(propertyDetails.data, "text/xml");
     const statusCode = xmlDoc.getElementsByTagName("code")[0].childNodes[0].nodeValue;
     const netLotSize = statusCode === '0' && xmlDoc.getElementsByTagName("lotSizeSqFt")[0]
-      ? xmlDoc.getElementsByTagName("lotSizeSqFt")[0].childNodes[0].nodeValue - 
-        xmlDoc.getElementsByTagName("finishedSqFt")[0].childNodes[0].nodeValue
+      ? xmlDoc.getElementsByTagName("lotSizeSqFt")[0].childNodes[0].nodeValue -
+      xmlDoc.getElementsByTagName("finishedSqFt")[0].childNodes[0].nodeValue
       : 0;
     const lotSize = netLotSize > 0
       ? netLotSize < 10000
@@ -68,7 +69,7 @@ export class Address extends Component {
       total,
     });
   };
-  
+
   handleClick = () => {
     if (this.state.zip.slice(0, 5) === '76005') {
       return this.props.history.push('/date-time');
@@ -78,26 +79,26 @@ export class Address extends Component {
 
   render() {
     const { lat, lng } = this.state;
-    return(
+    return (
       <PageContainer>
         {this.state.error
           ? <PageHeader
-              title="Ohhh Noo!!! 🎉🌳"
-              subtitle="Unfortunately we are not serving your area."
-            />
+            title="Ohhh Noo!!! 🎉🌳"
+            subtitle="Unfortunately we are not serving your area."
+          />
           : <Fragment>
             <PageHeader
-                title="Enter Your Home Address"
-                subtitle="We use this to locate your home ensuring you are within range."
-              />
-              <PlacesSearch
-                handleChange={this.setAddress}
-                defaultValue={this.state.address}
-                buttonOnClick={this.handleClick}
-              />
-              <Map address={{ lat, lng }} />
-              <StyledButton onClick={this.handleClick} showArrow>Date + Time</StyledButton>
-            </Fragment>
+              title="Enter Your Home Address"
+              subtitle="We use this to locate your home ensuring you are within range."
+            />
+            <PlacesSearch
+              handleChange={this.setAddress}
+              defaultValue={this.state.address}
+              buttonOnClick={this.handleClick}
+            />
+            <Map address={{ lat, lng }} />
+            <Button onClick={this.handleClick} showArrow alignRight>Date + Time</Button>
+          </Fragment>
         }
       </PageContainer>
     );

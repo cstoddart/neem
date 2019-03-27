@@ -4,13 +4,11 @@ import { AppContext } from '../../AppContext';
 import {
   PageContainer,
   PageHeader,
-  PageContent,
+  SplitContent,
   OrderSummary,
+  Button,
 } from '../ui';
 import { DateTimePicker } from './dateTimePicker/DateTimePicker'
-import {
-  StyledButton,
-} from './dateTimeStyles';
 
 export class DateTime extends Component {
   static contextType = AppContext;
@@ -40,7 +38,7 @@ export class DateTime extends Component {
     return (
       <PageContainer>
         <PageHeader title="What Day Do You Need Us?" />
-        <PageContent>
+        <SplitContent>
           <DateTimePicker
             selectedDay={this.state.selectedDay}
             selectDay={this.setSelectedDay}
@@ -50,8 +48,8 @@ export class DateTime extends Component {
             selectFrequency={this.setSelectedFrequency}
           />
           <OrderSummary />
-        </PageContent>
-        <StyledButton to="/payment" showArrow>Payment</StyledButton>
+        </SplitContent>
+        <Button to="/payment" showArrow alignRight>Payment</Button>
       </PageContainer>
     );
   }

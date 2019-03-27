@@ -5,7 +5,7 @@ import { getUser } from '../../services/firebase';
 import {
   PageContainer,
   PageHeader,
-  PageContent,
+  SplitContent,
   OrderSummary,
   SectionContainer,
   SectionHeader,
@@ -30,7 +30,7 @@ export class Account extends Component {
           title="Account Details"
           subtitle="Manage subscriptions, payment methods, & order history."
         />
-        <PageContent>
+        <SplitContent>
           <SectionContainer>
             {this.context.user.currentSubscription && <ManageSubscriptions />}
             <PaymentMethods />
@@ -39,7 +39,7 @@ export class Account extends Component {
           <SectionContainer>
             <CurrentSubscription />
           </SectionContainer>
-        </PageContent>
+        </SplitContent>
       </PageContainer>
     );
   }

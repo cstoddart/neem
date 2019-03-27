@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   PageContainer,
   PageHeader,
-  PageContent,
+  SplitContent,
   OrderSummary,
   SectionContainer,
   SectionHeader,
@@ -25,7 +25,7 @@ export class Summary extends Component {
           title="Hip Hip Hooray! 🎉🌳"
           subtitle="Thanks for trusting Neem with your lawn care, look below for next steps."
         />
-        <PageContent>
+        <SplitContent>
           <SectionContainer>
             <SectionHeader>Next Steps...</SectionHeader>
             <NextSteps>
@@ -53,7 +53,7 @@ export class Summary extends Component {
             </NextSteps>
           </SectionContainer>
           <OrderSummary />
-        </PageContent>
+        </SplitContent>
       </PageContainer>
     );
   }

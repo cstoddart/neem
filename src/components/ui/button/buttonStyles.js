@@ -15,11 +15,15 @@ export const StyledButton = styled(Link)`
   font-size: 16px;
   cursor: pointer;
 
-  ${({ fullWidth }) => fullWidth && `
+  ${({ fullWidth }) => fullWidth ? `
     display: flex;
     width: 100%;
     justify-content: center;
-  `}
+  ` : null}
+
+  ${({ alignRight }) => alignRight ? `
+    margin-left: auto;
+  ` : null}
 
   &:hover {
     background-color: transparent;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { SPACING } from '../../../constants';
 
-export const PageContent = styled.div`
+export const SplitContent = styled.div`
   display: flex;
   align-items: flex-start;
   width: 100%;
