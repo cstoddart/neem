@@ -56,7 +56,7 @@ class NavigationClass extends Component {
           {this.context.user.loggedIn
             ? <SignOut onClick={() => logout({
               context: this.context,
-              history: this.props.history
+              redirect: () => this.props.history.push('/login'),
             })}><img src={XImg} />Sign Out</SignOut>
             : <SignIn to="/login">Sign In</SignIn>
           }

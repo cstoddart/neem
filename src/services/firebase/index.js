@@ -17,7 +17,7 @@ const config = {
 const firebaseApp = firebase.initializeApp(config);
 const db = firebase.firestore();
 
-export function login({ email, password, context, history }) {
+export function login({ email, password, context, redirect }) {
   firebaseApp.auth().onAuthStateChanged(function (user) {
     if (user) {
       context.updateUser({
@@ -25,18 +25,18 @@ export function login({ email, password, context, history }) {
         id: user.uid,
       });
       localStorage.setItem('loggedIn', user.uid);
-      history.push('/address');
+      redirect();
     }
   });
   return firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .catch(console.error);
 }
 
-export function logout({ context, history }) {
+export function logout({ context, redirect }) {
   context.updateUser(initialState.user);
   localStorage.removeItem('loggedIn');
   firebaseApp.auth().signOut();
-  history.push('/login');
+  redirect();
 }
 
 export function createUser({ email, password, name, context, stripeCustomerId }) {
@@ -70,8 +70,8 @@ export async function updateUser({ id, name, context }) {
   });
 }
 
-export async function getUser(context) {
-  db.collection('users').doc(context.user.id || localStorage.getItem('loggedIn')).get().then(function (doc) {
+export function getUser(context) {
+  return db.collection('users').doc(context.user.id || localStorage.getItem('loggedIn')).get().then(function (doc) {
     if (doc.exists) {
       const user = doc.data();
       console.log('USER', user);

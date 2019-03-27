@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors({ origin: true }));
 
-app.post('/', (request, response) => {
+app.post('/process-payment', (request, response) => {
   const { token, charge, customer } = request.body;
   const tokenId = token.id;
   const amount = charge.amount;
@@ -54,6 +54,16 @@ app.post('/', (request, response) => {
   })
     .then((charge) => response.status(200).send({ charge }))
     .catch(handleError);
+});
+
+app.get('/get-customer', (request, response) => {
+  return stripe.customers.listCards(request.query.customerId, (error, cards) => {
+    if (cards) {
+      return response.status(200).send(cards);
+    }
+    console.log('REQUEST', request);
+    return response.status(500).send(error);
+  })
 });
 
 const firebasePathPatch = (app) => (req, res) => {

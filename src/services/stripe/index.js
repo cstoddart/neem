@@ -21,7 +21,7 @@ export function processPayment({ stripe, amount, name, email, stripeCustomerId, 
     };
 
     return axios.request({
-      url: FIREBASE_FUNCTION_URL,
+      url: `${FIREBASE_FUNCTION_URL}/process-payment`,
       method: 'post',
       headers: {
         'content-type': 'application/json',
@@ -29,4 +29,17 @@ export function processPayment({ stripe, amount, name, email, stripeCustomerId, 
       data: JSON.stringify(data),
     });
   })
+}
+
+export function getStripeCustomer(stripeCustomerId) {
+  return axios.request({
+    url: `${FIREBASE_FUNCTION_URL}/get-customer`,
+    method: 'get',
+    headers: {
+      'content-type': 'application/json',
+    },
+    params: {
+      customerId: stripeCustomerId,
+    },
+  });
 }

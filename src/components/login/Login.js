@@ -28,7 +28,7 @@ export class Login extends Component {
       email,
       password,
       context: this.context,
-      history: this.props.history,
+      redirect: () => this.props.history.push('/account'),
     });
   };
   

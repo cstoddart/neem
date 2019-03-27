@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Elements, injectStripe } from 'react-stripe-elements';
 
 import { AppContext } from '../../AppContext';
 import { getUser } from '../../services/firebase';
+import { getStripeCustomer } from '../../services/stripe';
 import {
   PageContainer,
   PageHeader,
@@ -18,12 +20,13 @@ import { CurrentSubscription } from './currentSubscription/CurrentSubscription';
 export class Account extends Component {
   static contextType = AppContext;
 
-  componentDidMount() {
-    getUser(this.context);
+  async componentDidMount() {
+    const user = await getUser(this.context);
+    const stripeCustomer = await getStripeCustomer(user.stripeCustomerId);
+    console.log('STRIPE CUSTOMER', stripeCustomer);
   }
 
   render() {
-    console.log('CONTEXT', this.context);
     return (
       <PageContainer>
         <PageHeader
