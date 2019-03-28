@@ -74,7 +74,6 @@ export function getUser(context) {
   return db.collection('users').doc(context.user.id || localStorage.getItem('loggedIn')).get().then(function (doc) {
     if (doc.exists) {
       const user = doc.data();
-      console.log('USER', user);
       context.updateUser(user);
       return user;
     } else {

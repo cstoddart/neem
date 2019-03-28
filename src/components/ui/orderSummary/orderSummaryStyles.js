@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { BORDER_RADIUS_SMALL, COLORS } from '../../../constants';
+import { COLORS } from '../../../constants';
+import { SectionCard } from '../sectionCard/SectionCard';
 
 export const EditButton = styled(Link)`
   position: absolute;
@@ -10,16 +11,6 @@ export const EditButton = styled(Link)`
   font-size: 15px;
   font-weight: bold;
   color: ${COLORS.TEXT};
-`;
-
-const SummaryBox = styled.div`
-  padding: 15px 25px;
-  border-radius: ${BORDER_RADIUS_SMALL};
-  position: relative;
-  
-  &:not(:last-of-type) {
-    margin-bottom: 15px;
-  }
 `;
 
 export const SummaryPoint = styled.div`
@@ -36,11 +27,11 @@ export const SummaryPointDetails = styled.h4`
   color: ${COLORS.TEXT_LIGHT};
 `;
 
-export const AddressSummary = styled(SummaryBox)`
+export const AddressSummary = styled(SectionCard)`
   border: 3px solid ${COLORS.GREY_LIGHT};
 `;
 
-export const CostSummary = styled(SummaryBox)`
+export const CostSummary = styled(SectionCard)`
   background-color: ${COLORS.GREY_LIGHT};
 
   ${SummaryPoint} {
@@ -54,7 +45,7 @@ export const CostSummary = styled(SummaryBox)`
   }
 `;
 
-export const OrderTotal = styled(SummaryBox)`
+export const OrderTotal = styled(SectionCard)`
   background-color: ${COLORS.BROWN_LIGHT};
 
   ${SummaryPoint} {

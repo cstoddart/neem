@@ -31,8 +31,8 @@ export function processPayment({ stripe, amount, name, email, stripeCustomerId, 
   })
 }
 
-export function getStripeCustomer(stripeCustomerId) {
-  return axios.request({
+export async function getStripeCustomer(context, stripeCustomerId) {
+  const { data: { data } } = await axios.request({
     url: `${FIREBASE_FUNCTION_URL}/get-customer`,
     method: 'get',
     headers: {
@@ -42,4 +42,15 @@ export function getStripeCustomer(stripeCustomerId) {
       customerId: stripeCustomerId,
     },
   });
+  const paymentMethods = data.map((paymentMethod) => ({
+    brand: paymentMethod.brand,
+    lastFour: paymentMethod.last4,
+    expirationMonth: paymentMethod.exp_month,
+    expirationYear: paymentMethod.exp_year,
+    zip: paymentMethod.address_zip,
+  }));
+  context.updateUser({
+    paymentMethods,
+  });
+  return data;
 }

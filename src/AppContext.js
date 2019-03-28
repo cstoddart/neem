@@ -23,5 +23,12 @@ export const initialState = {
       frequency: '',
       address: '',
     },
+    paymentMethods: [{
+      brand: '',
+      lastFour: '',
+      expirationMonth: 0,
+      expirationYear: 0,
+      zip: '',
+    }],
   },
 };

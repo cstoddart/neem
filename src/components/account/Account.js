@@ -8,22 +8,29 @@ import {
   PageContainer,
   PageHeader,
   SplitContent,
-  OrderSummary,
   SectionContainer,
-  SectionHeader,
 } from '../ui';
 import { ManageSubscriptions } from './manageSubscriptions/ManageSubscriptions';
 import { PaymentMethods } from './paymentMethods/PaymentMethods';
 import { OrderHistory } from './orderHistory/OrderHistory';
 import { CurrentSubscription } from './currentSubscription/CurrentSubscription';
 
+const accountSections = {
+  manageSubscriptions: 'manageSubscriptions',
+  paymentMethods: 'paymentMethods',
+  orderHistory: 'orderHistory',
+};
+
 export class Account extends Component {
   static contextType = AppContext;
 
+  state = {
+    activeSection: accountSections.manageSubscriptions,
+  };
+
   async componentDidMount() {
     const user = await getUser(this.context);
-    const stripeCustomer = await getStripeCustomer(user.stripeCustomerId);
-    console.log('STRIPE CUSTOMER', stripeCustomer);
+    await getStripeCustomer(this.context, user.stripeCustomerId);
   }
 
   render() {
@@ -35,9 +42,9 @@ export class Account extends Component {
         />
         <SplitContent>
           <SectionContainer>
-            {this.context.user.currentSubscription && <ManageSubscriptions />}
-            <PaymentMethods />
-            <OrderHistory />
+            <ManageSubscriptions active={this.state.activeSection === accountSections.manageSubscriptions} />
+            <PaymentMethods active={this.state.activeSection === accountSections.paymentMethods} />
+            <OrderHistory active={this.state.activeSection === accountSections.orderHistory} />
           </SectionContainer>
           <SectionContainer>
             <CurrentSubscription />
