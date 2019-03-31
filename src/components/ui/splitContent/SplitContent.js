@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { SPACING } from '../../../constants';
+import { SPACING } from 'src/constants';
 
 export const SplitContent = styled.div`
   display: flex;

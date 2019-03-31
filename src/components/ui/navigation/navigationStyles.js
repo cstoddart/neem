@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
 
-import { BORDER, BOX_SHADOW, COLORS, SITE_WIDTH } from '../../../constants';
+import { BORDER, BOX_SHADOW, COLORS, SITE_WIDTH } from 'src/constants';
 
 export const StyledNavigation = styled.div`
   width: 100%;

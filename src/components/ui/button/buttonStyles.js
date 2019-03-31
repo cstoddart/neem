@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { COLORS, BORDER_RADIUS_SMALL } from '../../../constants';
+import { COLORS, BORDER_RADIUS_SMALL } from 'src/constants';
 
 export const StyledButton = styled(Link)`
   background-color: ${COLORS.GREEN};

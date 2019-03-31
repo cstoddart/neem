@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { COLORS, BORDER_RADIUS } from '../../../constants';
+import { COLORS, BORDER_RADIUS } from 'src/constants';
 
 export const Container = styled.div`
   display: flex;

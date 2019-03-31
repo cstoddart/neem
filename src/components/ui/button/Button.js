@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import { ArrowIcon } from '../';
+import { ArrowIcon } from 'src/components/ui';
 import { StyledButton } from './buttonStyles';
 
 export const Button = ({

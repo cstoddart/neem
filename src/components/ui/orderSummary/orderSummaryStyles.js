@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { COLORS } from '../../../constants';
-import { SectionCard } from '../sectionCard/SectionCard';
+import { COLORS } from 'src/constants';
+import { SectionCard } from 'src/components/ui/sectionCard/SectionCard';
 
 export const EditButton = styled(Link)`
   position: absolute;

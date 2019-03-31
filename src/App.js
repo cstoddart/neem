@@ -8,14 +8,13 @@ import '@babel/polyfill';
 import { STRIPE_PUBLIC_KEY } from './keys';
 import { AppContext, initialState, actions } from './AppContext';
 import { Navigation } from './components/ui';
-import { Login } from './components/login/Login';
-import { Address } from './components/address/Address';
-import { Payment } from './components/payment/Payment';
-import { DateTime } from './components/dateTime/DateTime';
-import { Summary } from './components/summary/Summary';
-import { Account } from './components/account/Account';
+import { Login } from './components/booking/login/Login';
+import { Address } from './components/booking/address/Address';
+import { Payment } from './components/booking/payment/Payment';
+import { DateTime } from './components/booking/dateTime/DateTime';
+import { Summary } from './components/booking/summary/Summary';
+import { Account } from './components/booking/account/Account';
 import { GlobalStyles } from './appStyles';
-import { getUser } from './services/firebase';
 
 class PrivateRoute extends Component {
   static contextType = AppContext;

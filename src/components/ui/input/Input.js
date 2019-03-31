@@ -6,7 +6,7 @@ import {
   PostalCodeElement
 } from 'react-stripe-elements';
 
-import { COLORS } from '../../../constants';
+import { COLORS } from 'src/constants';
 import {
   Container,
   Label,

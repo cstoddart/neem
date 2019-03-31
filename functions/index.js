@@ -56,7 +56,7 @@ app.post('/process-payment', (request, response) => {
     .catch(handleError);
 });
 
-app.get('/get-customer', (request, response) => {
+app.get('/get-payment-methods', (request, response) => {
   return stripe.customers.listCards(request.query.customerId, (error, cards) => {
     if (cards) {
       return response.status(200).send(cards);
@@ -64,6 +64,16 @@ app.get('/get-customer', (request, response) => {
     console.log('REQUEST', request);
     return response.status(500).send(error);
   })
+});
+
+app.get('/update-payment-method', (request, response) => {
+  const { customerId, paymentMethodId, updatedPaymentMethod } = request.body;
+  
+  return stripe.customers.updateCard(
+    customerId,
+    paymentMethodId,
+    updatedPaymentMethod
+  );
 });
 
 const firebasePathPatch = (app) => (req, res) => {

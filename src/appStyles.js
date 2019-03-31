@@ -31,10 +31,12 @@ export const GlobalStyles = createGlobalStyle`
   h5,
   h6 {
     margin: 0;
+    color: ${COLORS.TEXT};
   }
 
   p {
     margin: 0;
+    color: ${COLORS.GREY_LIGHT};
   }
 
   a {

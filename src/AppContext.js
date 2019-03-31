@@ -24,10 +24,11 @@ export const initialState = {
       address: '',
     },
     paymentMethods: [{
+      id: '',
       brand: '',
       lastFour: '',
-      expirationMonth: 0,
-      expirationYear: 0,
+      expirationMonth: undefined,
+      expirationYear: undefined,
       zip: '',
     }],
   },

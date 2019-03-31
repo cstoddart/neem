@@ -7,6 +7,7 @@ export const COLORS = {
   BROWN_LIGHT: '#eeebde',
   GREY: '#aeaeae',
   GREY_LIGHT: '#f1f1f1',
+  GREY_DARK: '#6c6c6c',
 };
 export const SPACING = {
   SMALL: '15px',

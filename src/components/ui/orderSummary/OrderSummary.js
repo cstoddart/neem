@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import format from 'date-fns/format';
 
-import { AppContext } from '../../../AppContext';
-import { formatCurrency, formatNumber } from '../../../utils';
+import { AppContext } from 'src/AppContext';
+import { formatCurrency, formatNumber } from 'src/utils';
 import {
   SectionContainer,
   SectionHeader,
-} from '../';
+} from 'src/components/ui';
 import {
   EditButton,
   AddressSummary,

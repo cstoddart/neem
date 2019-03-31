@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/firebase-firestore';
 import 'firebase/auth';
 
-import { initialState } from '../../AppContext';
+import { initialState } from 'src/AppContext';
 
 const config = {
   apiKey: "AIzaSyBRwkSnbOQaHgAf4hFgxXo0Jee1fAKKtuI",

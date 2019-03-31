@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { SITE_WIDTH } from '../../../constants';
+import { SITE_WIDTH } from 'src/constants';
 
 export const PageContainer = styled.div`
   display: flex;

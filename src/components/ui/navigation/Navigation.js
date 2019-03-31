@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import { AppContext } from '../../../AppContext';
-import { logout } from '../../../services/firebase';
+import { AppContext } from 'src/AppContext';
+import { logout } from 'src/services/firebase';
 import {
   StyledNavigation,
   NavigationContent,
@@ -14,7 +14,7 @@ import {
   SignOut,
   SignIn,
 } from './navigationStyles';
-import XImg from '../../../assets/images/x.svg';
+import XImg from 'src/assets/images/x.svg';
 
 const Steps = () => (
   <StyledSteps>
