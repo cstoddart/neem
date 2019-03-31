@@ -32,37 +32,9 @@ class PaymentInputs extends Component {
     }
   }
 
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
-    const isNewUser = this.state.email && this.state.password;
-    const isExistingUser = this.context.user.loggedIn;
-    const paymentResult = await processPayment({
-      stripe: this.props.stripe,
-      amount: this.context.order.total,
-      name: this.state.name,
-      email: this.state.email,
-      stripeCustomerId: this.context.user.stripeCustomerId,
-      isNewUser,
-      isExistingUser,
-    });
-    console.log('PAYMENT RESULT', paymentResult);
-    if (isNewUser) {
-      await createUser({
-        email: this.state.email,
-        password: this.state.password,
-        name: this.state.name,
-        context: this.context,
-        stripeCustomerId: paymentResult.data.customer.id,
-      });
-    } else if (isExistingUser) {
-      await updateUser({
-        id: this.context.user.id,
-        name: this.state.name,
-        context: this.context,
-      });
-    } 
-    this.context.updateOrder({ paid: true });
-    this.props.redirect();
+    this.props.processOrder({ formData: this.state });
   };
 
   handleChange = (event) => this.setState({ [event.target.name]: event.target.value });
@@ -71,9 +43,9 @@ class PaymentInputs extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <InputRow>
-          <Input width="50%" value={this.state.cardNumber} name="cardNumber" type="cardNumber" label="Card Number" placeholder="**** **** **** ****" />
-          <Input width="25%" value={this.state.expiration} name="expiration" type="expiration" label="Exp" placeholder="MM/YY" />
-          <Input width="25%" value={this.state.securityCode} name="securityCode" type="securityCode" label="CVV" placeholder="***" />
+          <Input width="50%" type="cardNumber" name="cardNumber" label="Card Number" placeholder="**** **** **** ****" />
+          <Input width="25%" type="expiration" name="expiration" label="Exp" placeholder="MM/YY" />
+          <Input width="25%" type="securityCode" name="securityCode" label="CVV" placeholder="***" />
         </InputRow>
         {!this.context.user.loggedIn && (
           <InputRow>
@@ -88,7 +60,7 @@ class PaymentInputs extends Component {
         <InputRow>
           <Input width="50%" value={this.state.unit} onChange={this.handleChange} name="unit" label="Apt, Floor, Unit" placeholder="Apt 0000" />
           <Input width="25%" value={this.state.state} onChange={this.handleChange} name="state" label="State" placeholder="TX" />
-          <Input width="25%" value={this.state.zip} name="zip" type="zip" label="Zip Code" placeholder="00000" />
+          <Input width="25%" type="zip" name="zip" label="Zip Code" placeholder="00000" />
         </InputRow>
         <Button type="submit" onClick={this.handleSubmit} fullWidth>Submit Payment</Button>
       </form>

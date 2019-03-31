@@ -77,9 +77,12 @@ export const StyledDay = styled(DateTimeOption)`
 
 export const DayOfWeek = styled.h3`
   margin-bottom: 5px;
+  color: inherit;
 `;
 
-export const DayOfMonth = styled.h1``;
+export const DayOfMonth = styled.h1`
+  color: inherit;
+`;
 
 export const BackToDateLink = styled.h4`
   position: absolute;

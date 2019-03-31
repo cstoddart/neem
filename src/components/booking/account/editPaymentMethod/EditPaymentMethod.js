@@ -42,9 +42,9 @@ export class EditPaymentMethodClass extends Component {
         <PaymentMethodDetails>
           <form>
             <InputRow>
-              <Input width="50%" value={this.state.cardNumber} name="cardNumber" type="cardNumber" label="Card Number" placeholder="**** **** **** ****" />
-              <Input width="25%" value={this.state.expiration} name="expiration" type="expiration" label="Exp" placeholder="MM/YY" />
-              <Input width="25%" value={this.state.securityCode} name="securityCode" type="securityCode" label="CVV" placeholder="***" />
+              <Input width="50%" type="cardNumber" name="cardNumber" label="Card Number" placeholder="**** **** **** ****" />
+              <Input width="25%" type="expiration" name="expiration" label="Exp" placeholder="MM/YY" />
+              <Input width="25%" type="securityCode" name="securityCode" label="CVV" placeholder="***" />
             </InputRow>
             <InputRow>
               <Input width="50%" value={this.state.name} onChange={this.handleChange} name="name" label="Cardholder Name" placeholder="John Doe" />
@@ -53,7 +53,7 @@ export class EditPaymentMethodClass extends Component {
             <InputRow>
               <Input width="50%" value={this.state.unit} onChange={this.handleChange} name="unit" label="Apt, Floor, Unit" placeholder="Apt 0000" />
               <Input width="25%" value={this.state.state} onChange={this.handleChange} name="state" label="State" placeholder="TX" />
-              <Input width="25%" value={this.state.zip} name="zip" type="zip" label="Zip Code" placeholder="00000" />
+              <Input width="25%" type="zip" name="zip" label="Zip Code" placeholder="00000" />
             </InputRow>
           </form>
         </PaymentMethodDetails>
